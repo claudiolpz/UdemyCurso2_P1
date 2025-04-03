@@ -29,6 +29,44 @@ function App() {
             return <div>Numero no es 13 ni 14</div>;
         }
       })()}
+      <hr />
+      <h1>EJEMPLOS LOOP</h1>
+      <h3>Loop Normal ES6</h3>
+        <ul>
+          {[...Array(11)].map((x,i) => (
+            <li key={i}>{i}</li>
+          ))}
+
+        </ul>
+      <h3>Loop IIFE</h3>
+          <ul>
+            {(function(rows, i, len){
+              while (++i <= len){
+                rows.push(<li key={i}>{i}</li>);
+              }
+              return rows;
+            })([], 0, 10)}
+          </ul>
+
+      <h3>ES2015 y array</h3>
+        <ul>
+            {Array(11).fill(1).map((el,i)=>
+              <li key={i}>{i}</li>
+            )}
+        </ul>
+      <h3>Ciclo Sencillo</h3>
+            <ul>
+              {(() => {
+                let rows = [];
+                for (let i = 0; i <= 10; i++) {
+                  rows.push(<li key={i}>{i}</li>);
+                }
+                return rows;
+              })()}
+
+            </ul>
+      
+      <hr />
     </>
   );
 }
