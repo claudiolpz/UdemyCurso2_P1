@@ -1,12 +1,20 @@
 
 function App() {
-  const ejemplo = <h1>Hola desde JSX INTERPOLACION</h1>
+  let edad = 21;
   return (
-    <div className="App">
-      <h1>Hola Mundo</h1>
-      {ejemplo}
-    </div>
-  )
+    <>
+      <h1>Renderizado conditional</h1>
+      {(edad>=18) && (
+        <div>Persona mayor de edad <hr /></div>
+      )}
+      <hr />
+      {(edad>=18) ? (
+        <div>Persona mayor de edad</div>
+      ) : (
+        <div>Persona menor de edad</div>
+      )}
+    </>
+  );
 }
 
-export default App
+export default App;
