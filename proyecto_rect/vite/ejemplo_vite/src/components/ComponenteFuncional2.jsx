@@ -1,4 +1,5 @@
- 
+ import Pais from "./Pais"
+
     const ComponenteFuncional2 = ({prop1, nombre, paises}) => {
     return (
         <>
@@ -32,11 +33,7 @@
         </thead>
         <tbody>
             {paises.map((pais) => (
-                <tr key={pais.id}>
-                    <td>{pais.id}</td>
-                    <td>{pais.nombre}</td>
-                    <td>{pais.capital}</td>
-                </tr>
+                <Pais key={pais.id} pais={pais}/>
             ))}
         </tbody>
 
