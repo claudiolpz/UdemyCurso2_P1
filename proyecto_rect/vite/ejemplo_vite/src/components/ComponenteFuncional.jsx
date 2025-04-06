@@ -1,5 +1,7 @@
 import ComponenteFuncional2 from "./ComponenteFuncional2";
 import Numero from "./numero";
+import ChildrenComponent from "./ChildrenComponent";
+
 const ComponenteFuncional = () => {
   let nombre = "Claudio JIJIJAJA";
   let numero = 12;
@@ -67,6 +69,10 @@ const ComponenteFuncional = () => {
           No es 12
         </div>
       )}
+      <hr />
+      <ChildrenComponent otro="mas contenido"> 
+        <p className="clase_roja">Hola desde el componente hijo</p>
+      </ChildrenComponent> 
     </div>
   );
 };
