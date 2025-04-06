@@ -33,7 +33,11 @@
         </thead>
         <tbody>
             {paises.map((pais) => (
+              pais.nombre == "Chile" ? (
                 <Pais key={pais.id} pais={pais}/>
+
+              ):null
+
             ))}
         </tbody>
 

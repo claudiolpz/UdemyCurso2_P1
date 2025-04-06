@@ -6,7 +6,7 @@ function App() {
   
   return (
     
-      <ComponenteFuncional1v2/> 
+      <ComponenteFuncional/> 
      
   );
 }
