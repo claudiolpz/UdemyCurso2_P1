@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 const RutasQueryString = () => {
   const search = useLocation().search;
   let id = new URLSearchParams(search).get("id");
-  //const slug = new URLSearchParams(search).get("slug");
+  const slug = new URLSearchParams(search).get("slug");
 
   return (
     <>
