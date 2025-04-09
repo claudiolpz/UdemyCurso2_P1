@@ -5,8 +5,9 @@ const Rutas = () => {
   let slug = "chester-cortes";
   return (
     <>
-      <h1>Rutas</h1>
-      <ul className="list-disc pl-5 ml-5">
+      <h1 className="text-3xl font-extrabold text-center">Rutas</h1>
+      <div title="Rutas-div" className="pl-5 ml-7 mt-3">
+      <ul className="list-disc">
         <li>
           <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline" to="/">Home</Link>
         </li>
@@ -27,6 +28,7 @@ const Rutas = () => {
           </Link>
         </li>
       </ul>
+      </div>
     </>
   );
 };

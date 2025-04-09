@@ -5,7 +5,7 @@ const Frontend = () => {
   return (
     <>
       <Header />
-      <main className="main-content">
+      <main className="main-content ">
       <Outlet />
       </main>
       <Footer/>
