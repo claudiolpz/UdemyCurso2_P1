@@ -1,15 +1,17 @@
 import { Link } from "react-router";
+import { useState } from "react";
 
-const HoocksEventoClick = () => {
-  const handlePresioname= () => {
-
-    alert("Hola soy un evento de click en un boton");
-
-  }
-
-  const handlePresionameConParametro= (nombre) =>{
-    console.log(`Hola ${nombre} soy un evento de click en un boton`);
-  }
+const HooksUseState = () => {
+  const [contador, setContador] = useState(0); //setContador es la funcion
+  const handleIncrementar = () => {
+    setContador(contador + 1); //contador es el estado
+  };
+  const [contadorDos, setContadorDos] = useState(10); //setContador es la funcion
+  const handleRestar = () => {
+    (contadorDos > 0)
+      ? setContadorDos(contadorDos - 1)
+      : alert("No se puede restar más de 0"); //contador es el estado
+  };
 
   return (
     <div>
@@ -75,30 +77,40 @@ const HoocksEventoClick = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                HooksClick
+                HooksUseState
               </span>
             </div>
           </li>
         </ol>
       </nav>
-      
-      <h1 className="text-center">onClick</h1>
-      <hr /> 
 
-      <button type="button" className="text-black bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={handlePresioname}>  Click <i className="fa-regular fa-hand-pointer"></i></button>
+      <h1 className="text-center">UseState</h1>
+      <hr />
 
-<hr />
+      <button
+        type="button"
+        className="text-black bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        onClick={handleIncrementar}
+      >
+        {" "}
+        Incrementar <i className="fa-regular fa-plus"></i>
+      </button>
+      <p>Contador: {contador}</p>
+      <hr />
 
- 
-<button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={()=>{handlePresioname()}}> Click 2 <i className="fa-regular fa-hand-pointer"></i></button>
-
-
-<hr />
-
-<button type="button" className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={()=>{handlePresionameConParametro('Caludio')}} > Click Parametro 1 <i className="fa-regular fa-hand-pointer"></i></button>
+      <button
+        type="button"
+        className="!mt-5 text-black bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        onClick={handleRestar}
+      >
+        {" "}
+        Decrementar <i className="fa-solid fa-minus"></i>
+      </button>
+      <hr />
+      <p>Contador: {contadorDos}</p>
 
     </div>
   );
 };
 
-export default HoocksEventoClick;
+export default HooksUseState;

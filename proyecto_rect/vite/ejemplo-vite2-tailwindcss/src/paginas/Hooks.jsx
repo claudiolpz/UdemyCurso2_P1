@@ -13,7 +13,15 @@ const Hooks = () => {
                 <li >
                     <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/evento-click">Evento Click </Link>
                 </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/usestate">Evento UseState </Link>
+                </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/onchange">Evento OnChange </Link>
+                </li>
             </ul>
+
+            
 
         </div>
 

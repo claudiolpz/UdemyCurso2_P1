@@ -15,6 +15,8 @@ import Error404 from './paginas/Error404'
 import ErrorPersonalizado from './paginas/ErrorPersonalizado'
 import Hooks from './paginas/Hooks'
 import HooksEventoClick from './paginas/HooksEventoClick'
+import HooksUseState from './paginas/HooksUseState'
+import HooksEventoOnChange from './paginas/HooksEventoOnChange'
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,16 @@ const router = createBrowserRouter([
       {
         path: "/hooks/evento-click",
         element: <HooksEventoClick />,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/hooks/usestate",
+        element: <HooksUseState/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/hooks/onchange",
+        element: <HooksEventoOnChange/>,
         errorElement: <ErrorPersonalizado/>,
       },
       {
