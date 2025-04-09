@@ -17,6 +17,8 @@ import Hooks from './paginas/Hooks'
 import HooksEventoClick from './paginas/HooksEventoClick'
 import HooksUseState from './paginas/HooksUseState'
 import HooksEventoOnChange from './paginas/HooksEventoOnChange'
+import HooksEventosVarios from './paginas/HooksEventosVarios'
+
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,11 @@ const router = createBrowserRouter([
       {
         path: "/hooks/onchange",
         element: <HooksEventoOnChange/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/hooks/eventos-varios",
+        element: <HooksEventosVarios/>,
         errorElement: <ErrorPersonalizado/>,
       },
       {
