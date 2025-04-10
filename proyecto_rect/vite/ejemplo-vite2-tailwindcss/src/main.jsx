@@ -19,6 +19,7 @@ import HooksUseState from './paginas/HooksUseState'
 import HooksEventoOnChange from './paginas/HooksEventoOnChange'
 import HooksEventosVarios from './paginas/HooksEventosVarios'
 import HooksUseEffect from './paginas/HookUseEffect'
+import HooksCustom from './paginas/HooksCustom'
 
 const router = createBrowserRouter([
   {
@@ -74,6 +75,11 @@ const router = createBrowserRouter([
       {
         path: "/hooks/use-effect",
         element: <HooksUseEffect/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/hooks/custom-hooks",
+        element: <HooksCustom/>,
         errorElement: <ErrorPersonalizado/>,
       },
       {
