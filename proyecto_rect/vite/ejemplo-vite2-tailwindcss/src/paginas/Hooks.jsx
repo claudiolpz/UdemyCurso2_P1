@@ -29,7 +29,16 @@ const Hooks = () => {
                     <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/custom-hooks">Custom Hooks</Link>
                 </li>
                 <li >
-                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/useloaderdata">useLoaderData</Link>
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/useloaderdata">UseLoaderData</Link>
+                </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/usenavigate">UseNavegate</Link>
+                </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/uselocation">UseLocation</Link>
+                </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/useref">UseRef</Link>
                 </li>
             </ul>
 
