@@ -18,5 +18,19 @@ const productos = [
   { id: 12, categoria_id: 2, nombre: "Cebolla", precio: 400 },
 ];
 
+const paises = [
+  { id: 1, nombre: "Chile", dominio: "cl" },
+  { id: 2, nombre: "Argentina", dominio: "ar" },
+  { id: 3, nombre: "Colombia", dominio: "co" },
+  { id: 4, nombre: "Perú", dominio: "pe" },
+  { id: 5, nombre: "Brasil", dominio: "br" },
+  { id: 6, nombre: "Uruguay", dominio: "uy" },
+  { id: 7, nombre: "Paraguay", dominio: "py" },
+  { id: 8, nombre: "Ecuador", dominio: "ec" },
+  { id: 9, nombre: "Venezuela", dominio: "ve" },
+  { id: 10, nombre: "Mexico", dominio: "mx" },
+];
+
 export { productos };
 export { categorias };
+export { paises }
