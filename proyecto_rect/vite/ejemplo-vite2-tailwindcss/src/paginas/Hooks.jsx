@@ -22,6 +22,9 @@ const Hooks = () => {
                 <li >
                     <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/eventos-varios">Eventos Varios </Link>
                 </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/hooks/use-effect">Eventos Use Effect </Link>
+                </li>
             </ul>
 
             
