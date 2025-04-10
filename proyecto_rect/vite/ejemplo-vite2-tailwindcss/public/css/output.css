@@ -219,9 +219,6 @@ button,
 [type='submit'] {
   -webkit-appearance: button;
   /* 1 */
-  background-color: transparent;
-  /* 2 */
-  background-image: none;
   /* 2 */
 }
 
@@ -2445,3 +2442,8 @@ input:checked + .toggle-bg {
     line-height: 1;
   }
 }
+h1{
+  font-size: var(--text-4xl); /* 2.25rem (36px) */ 
+  line-height: var(--text-4xl--line-height); /* calc(2.5 / 2.25) */
+}
+

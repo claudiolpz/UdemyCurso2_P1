@@ -1,2 +1,11 @@
 @import "tailwindcss";
 
+.clase_roja {
+    background-color: #ff0000;
+    color: #fff;
+  }
+  .clase_azul {
+    background-color: #0000ff;
+    color: #fff;
+  }
+  
