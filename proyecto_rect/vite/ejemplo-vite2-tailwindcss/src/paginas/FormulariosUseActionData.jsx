@@ -1,7 +1,8 @@
-import { Link, Form } from "react-router";
+import { Link, Form, useActionData } from "react-router";
 import Swal from "sweetalert2";
 import { atributos, categorias_productos } from "../datos/datos";
 import { useState } from "react";
+import Validaciones from "../componentes/Validaciones";
 
 export async function action({ request }) {
   // siempre los action deben retornar algo, si no f aplicacion
@@ -16,6 +17,36 @@ export async function action({ request }) {
   const datos = Object.fromEntries(formData); // 2da opcion
   //   console.log(formData)
 
+  let errores = [];
+
+  if (formData.get("categoria") == "0") {
+    errores.push("Debe seleccionar al menos una categoría");
+  }
+  if (Object.values(datos).includes('')) {
+    errores.push("Todos los campos son obligatorios");
+  }
+  let expresiones_precios = new RegExp("[0-9]");
+  console.log(errores);
+  if (!expresiones_precios.test(formData.get("precio"))) {
+    errores.push("El precio solo debe tener números");
+  }
+  const atributosSeleccionados = atributos.some(
+    (atributo) => formData.get(`atributo_${atributo.id}`) != null
+  );
+  if (!atributosSeleccionados) {
+    errores.push("Debe seleccionar al menos un atributo");
+  }
+  if (Object.keys(errores).length) {
+    return errores;
+  }
+
+  // if (Object.keys(errores).length) {
+  //   return Swal.fire({
+  //     icon: "error",
+  //     title: "ERROR",
+  //     text: `${errores}`,
+  //   });
+  // }
   //Recibir checkbox dinamicos
   let arreglo = [];
   let mensajeArreglo = "";
@@ -25,19 +56,26 @@ export async function action({ request }) {
       mensajeArreglo = mensajeArreglo + atributo.nombre + ",";
     }
   });
-  return Swal.fire({
-    icon: "success",
-    title: "OK",
-    text: `El nombre es es ${formData.get("nombre")} | Nombre: ${
-      datos.nombre
-    } | Categoria: ${nombreCategoria} | Peligroso : ${formData.get("peligroso")} | Atributos : ${mensajeArreglo}`,
-  });
+
+  if (!Object.keys(errores).length) {
+    return Swal.fire({
+      icon: "success",
+      title: "OK",
+      text: `El nombre es es ${formData.get("nombre")} | Nombre: ${
+        datos.nombre
+      } | Categoria: ${nombreCategoria} | Peligroso : ${formData.get(
+        "peligroso"
+      )} | Atributos : ${mensajeArreglo}`,
+    });
+  }
 }
 const FormulariosUseActionData = () => {
   const [peligroso, setPeligroso] = useState(false);
   const handlePeligroso = () => {
     setPeligroso(!peligroso);
   };
+  const errores = useActionData();
+  console.log(errores)
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -111,7 +149,10 @@ const FormulariosUseActionData = () => {
 
       <h1 className="text-center">Formulario Use Action Data </h1>
       <hr />
-      <Form className="max-w-sm mx-auto" method="POST">
+        {errores?.length && <Validaciones errores = {errores}/>}
+
+      <Form className="max-w-sm mx-auto" method="POST" noValidate> {/* Aseguramos de que el form no tome validaciones de html, y tome lo implementado en el action*/}
+       
         <div className="flex flex-col  justify-center mt-5 mb-5">
           <label
             htmlFor="categoria"
