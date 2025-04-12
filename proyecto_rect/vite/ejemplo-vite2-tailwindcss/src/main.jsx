@@ -24,6 +24,9 @@ import HooksuseLoaderData, {loader as paisesLoader} from './paginas/HooksuseLoad
 import HooksUseNavegate from './paginas/HooksUseNavegate'
 import HooksUseLocation from './paginas/HooksUseLocation'
 import HooksUseRef from './paginas/HooksUseRef'
+import Formularios from './paginas/Formularios'
+import FormularioSimple from './paginas/FormularioSimple'
+import FormulariosUseActionData, {action as procesarFormularioActionDate} from './paginas/FormulariosUseActionData'
 
 const router = createBrowserRouter([
   {
@@ -106,6 +109,21 @@ const router = createBrowserRouter([
         path: "/hooks/useref",
         element: <HooksUseRef/>,
         errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/formularios",
+        element: <Formularios/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/formulario-simple",
+        element: <FormularioSimple/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/formulario/useactiondata",
+        element: <FormulariosUseActionData/>,
+        action: procesarFormularioActionDate,
       },
       {
         path: "*",
