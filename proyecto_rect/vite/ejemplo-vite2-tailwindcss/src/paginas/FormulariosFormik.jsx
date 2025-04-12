@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import Swal from "sweetalert2";
 
 const FormulariosFormik = () => {
