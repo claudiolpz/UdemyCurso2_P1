@@ -27,6 +27,7 @@ import HooksUseRef from './paginas/HooksUseRef'
 import Formularios from './paginas/Formularios'
 import FormularioSimple from './paginas/FormularioSimple'
 import FormulariosUseActionData, {action as procesarFormularioActionDate} from './paginas/FormulariosUseActionData'
+import FormulariosFormik from './paginas/FormulariosFormik'
 
 const router = createBrowserRouter([
   {
@@ -123,6 +124,11 @@ const router = createBrowserRouter([
       {
         path: "/formulario/useactiondata",
         element: <FormulariosUseActionData/>,
+        action: procesarFormularioActionDate,
+      },
+      {
+        path: "/formulario/formik",
+        element: <FormulariosFormik/>,
         action: procesarFormularioActionDate,
       },
       {

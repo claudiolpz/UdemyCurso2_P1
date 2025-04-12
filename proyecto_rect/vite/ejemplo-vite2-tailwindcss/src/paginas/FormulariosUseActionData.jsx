@@ -22,7 +22,7 @@ export async function action({ request }) {
   if (formData.get("categoria") == "0") {
     errores.push("Debe seleccionar al menos una categoría");
   }
-  if (Object.values(datos).includes('')) {
+  if (Object.values(datos).includes("")) {
     errores.push("Todos los campos son obligatorios");
   }
   let expresiones_precios = new RegExp("[0-9]");
@@ -75,7 +75,20 @@ const FormulariosUseActionData = () => {
     setPeligroso(!peligroso);
   };
   const errores = useActionData();
-  console.log(errores)
+
+  //VALIDACION asincrona ejemplo con nombre que sea unico (SIMULACION)
+
+  const [name, setName] = useState("");
+  async function handleBlur(name) {
+    if (name == "Claudio") {
+      Swal.fire({
+        icon: "error",
+        title: "ERROR",
+        text: `Nombre Ingresado no valido`,
+      });
+      setName("");
+    }
+  }
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -149,10 +162,11 @@ const FormulariosUseActionData = () => {
 
       <h1 className="text-center">Formulario Use Action Data </h1>
       <hr />
-        {errores?.length && <Validaciones errores = {errores}/>}
+      {errores?.length && <Validaciones errores={errores} />}
 
-      <Form className="max-w-sm mx-auto" method="POST" noValidate> {/* Aseguramos de que el form no tome validaciones de html, y tome lo implementado en el action*/}
-       
+      <Form className="max-w-sm mx-auto" method="POST" noValidate>
+        {" "}
+        {/* Aseguramos de que el form no tome validaciones de html, y tome lo implementado en el action*/}
         <div className="flex flex-col  justify-center mt-5 mb-5">
           <label
             htmlFor="categoria"
@@ -173,7 +187,6 @@ const FormulariosUseActionData = () => {
             ))}
           </select>
         </div>
-
         <div className="mb-5">
           <label
             htmlFor="Nombre"
@@ -185,6 +198,13 @@ const FormulariosUseActionData = () => {
             type="text"
             id="nombre"
             name="nombre"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            onBlur={(e) => {
+              handleBlur(e.target.value);
+            }}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Nombre"
           />
@@ -262,7 +282,6 @@ const FormulariosUseActionData = () => {
           ></textarea>
         </div>
         <hr />
-
         <div className="mb-4 mt-2 ">
           <label
             htmlFor="peligroso"
