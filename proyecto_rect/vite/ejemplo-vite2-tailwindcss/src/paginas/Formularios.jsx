@@ -19,7 +19,12 @@ const Formularios = () => {
                 <li >
                     <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/formulario/formik">Formulario Formik </Link>
                 </li>
-               
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/formulario/hookform">Formulario React Hook Form </Link>
+                </li>
+                <li >
+                    <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/formulario/finalform">Formulario React Final Form </Link>
+                </li>
                
             </ul>
 
