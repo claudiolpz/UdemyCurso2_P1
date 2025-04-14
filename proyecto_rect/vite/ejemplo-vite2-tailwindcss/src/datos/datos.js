@@ -31,6 +31,53 @@ const paises = [
   { id: 10, nombre: "Mexico", dominio: "mx" },
 ];
 
+const categorias_productos = [
+  {
+    id: 1,
+    nombre: "Abarrotes",
+  },
+  {
+    id: 2,
+    nombre: "Lácteos",
+  },
+  {
+    id: 3,
+    nombre: "Carnes",
+  },
+  {
+    id: 4,
+    nombre: "Licores",
+  },
+  {
+    id: 5,
+    nombre: "Perfumeria",
+  },
+];
+
+const atributos = [
+  {
+    id: 1,
+    nombre: "Perecible",
+  },
+  {
+    id: 2,
+    nombre: "Armable",
+  },
+  {
+    id: 3,
+    nombre: "Frágril",
+  },
+  {
+    id: 4,
+    nombre: "Multiuso",
+  },
+  {
+    id: 5,
+    nombre: "Edicion limitada",
+  },
+];
 export { productos };
 export { categorias };
-export { paises }
+export { paises };
+export { atributos };
+export { categorias_productos };

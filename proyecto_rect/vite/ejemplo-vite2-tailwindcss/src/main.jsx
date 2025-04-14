@@ -24,6 +24,12 @@ import HooksuseLoaderData, {loader as paisesLoader} from './paginas/HooksuseLoad
 import HooksUseNavegate from './paginas/HooksUseNavegate'
 import HooksUseLocation from './paginas/HooksUseLocation'
 import HooksUseRef from './paginas/HooksUseRef'
+import Formularios from './paginas/Formularios'
+import FormularioSimple from './paginas/FormularioSimple'
+import FormulariosUseActionData, {action as procesarFormularioActionDate} from './paginas/FormulariosUseActionData'
+import FormulariosFormik from './paginas/FormulariosFormik'
+import FormularioReactHookForm from './paginas/FormularioReactHookForm'
+import FormularioReactFinalForm from './paginas/FormularioReactFinalForm'
 
 const router = createBrowserRouter([
   {
@@ -106,6 +112,33 @@ const router = createBrowserRouter([
         path: "/hooks/useref",
         element: <HooksUseRef/>,
         errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/formularios",
+        element: <Formularios/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/formulario-simple",
+        element: <FormularioSimple/>,
+        errorElement: <ErrorPersonalizado/>,
+      },
+      {
+        path: "/formulario/useactiondata",
+        element: <FormulariosUseActionData/>,
+        action: procesarFormularioActionDate,
+      },
+      {
+        path: "/formulario/formik",
+        element: <FormulariosFormik/>,
+      },
+      {
+        path: "/formulario/hookform",
+        element: <FormularioReactHookForm/>,
+      },
+      {
+        path: "/formulario/finalform",
+        element: <FormularioReactFinalForm/>,
       },
       {
         path: "*",
