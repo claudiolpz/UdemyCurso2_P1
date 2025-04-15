@@ -21,7 +21,12 @@ const Utiles = () => {
               <li >
                   <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/utiles/swipeable">React Swipeable List </Link>
               </li>
-         
+              <li >
+                  <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/utiles/webcam">Webcam </Link>
+              </li>
+              <li >
+                  <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/utiles/graficos">Gráficos </Link>
+              </li>
           </ul>
 
           

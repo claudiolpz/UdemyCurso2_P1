@@ -1,10 +1,34 @@
 import { Link } from "react-router"
-import dayjs from 'dayjs'
-import 'dayjs/locale/es'
-
-const UtiliesDayjs = () => {
-    let fecha = new Date();
-    dayjs.locale('es')
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
+import {Pie} from 'react-chartjs-2'
+const UtilesGraficos = () => {
+    ChartJS.register(ArcElement, Tooltip, Legend);
+    const data = {
+        labels: ['PHP', 'Python', 'Java', 'Javascript', 'C#', 'Golang'],
+        datasets: [
+          {
+            label: 'Número de desarrolladores',
+            data: [1200, 5501, 4300, 5231, 3214, 960],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -69,38 +93,20 @@ const UtiliesDayjs = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Dayjs
+              Gráficos
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Dayjs </h1>
+      <h1 className="text-center mb-2">Gráficos </h1>
       <hr />
-      <h3>Formatar Fecha</h3>
-
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-        <li className="font-medium mt-2 ml-2">Fecha: {dayjs(fecha).format('dddd').replace(/\b[a-z]/g, c=> c.toUpperCase())} {dayjs(fecha).format('DD')} de {dayjs(fecha).format('MMMM').replace(/\b[a-z]/g, c=> c.toUpperCase())} de {dayjs(fecha).format('YYYY')} a las {dayjs(fecha).format('HH:mm:ss')}    
-         </li>
-         <li className="font-medium mt-2 ml-2">Fecha Corta: {dayjs(fecha).format('DD/MM/YYYY')}</li>
-         <li className="font-medium mt-2 ml-2">Fecha en timestamp: {fecha.valueOf()}</li>
-      </ul>
-      <hr className="mb-2 mt-2"/>
-      <h3>Calculo con fechas </h3>
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha + 7 dias: {" "}
-            {dayjs(fecha).add(7, 'day').format('DD/MM/YYYY')}</li>
-        <li className="font-medium mt-2 ml-2">Fecha - 7 dias: {" "}
-            {dayjs(fecha).subtract(7, 'day').format('DD/MM/YYYY')}</li>
-        <li className="font-medium mt-2 ml-2">Fecha + 7 meses: {" "}
-            {dayjs(fecha).subtract(7, 'month').format('DD/MM/YYYY')}</li>
-        <li className="font-medium mt-2 ml-2">Fecha + 7 años: {" "}
-            {dayjs(fecha).add(7, 'year').format('DD/MM/YYYY')}</li>
-      </ul>
+      <div className="w-3xs h-3xs" >
+      <Pie data={data} />
+      </div>
     </div>
   )
 }
 
-export default UtiliesDayjs
+export default UtilesGraficos

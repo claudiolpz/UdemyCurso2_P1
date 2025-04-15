@@ -31,10 +31,12 @@ import FormulariosFormik from './paginas/FormulariosFormik'
 import FormularioReactHookForm from './paginas/FormularioReactHookForm'
 import FormularioReactFinalForm from './paginas/FormularioReactFinalForm'
 import Utiles from './paginas/Utiles'
-import UtiliesDayjs from './paginas/UtiliesDayjs'
+import UtiliesDayjs from './paginas/UtilesDayjs'
 import Utilesmoment from './paginas/Utilesmoment'
 import UtilesSpinner from './paginas/UtilesSpinner'
 import UtilesSwipeable from './paginas/UtilesSwipeable'
+import UtilesWebcam from './paginas/UtilesWebcam'
+import UtilesGraficos from './paginas/UtilesGraficos'
 
 const router = createBrowserRouter([
   {
@@ -164,6 +166,14 @@ const router = createBrowserRouter([
       {
         path: "/utiles/swipeable",
         element: <UtilesSwipeable/>,
+      },
+      {
+        path: "/utiles/webcam",
+        element: <UtilesWebcam/>,
+      },
+      {
+        path: "/utiles/graficos",
+        element: <UtilesGraficos/>,
       },
       {
         path: "*",
