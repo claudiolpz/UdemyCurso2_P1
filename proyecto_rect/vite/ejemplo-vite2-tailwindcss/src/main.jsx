@@ -30,6 +30,11 @@ import FormulariosUseActionData, {action as procesarFormularioActionDate} from '
 import FormulariosFormik from './paginas/FormulariosFormik'
 import FormularioReactHookForm from './paginas/FormularioReactHookForm'
 import FormularioReactFinalForm from './paginas/FormularioReactFinalForm'
+import Utiles from './paginas/Utiles'
+import UtiliesDayjs from './paginas/UtiliesDayjs'
+import Utilesmoment from './paginas/Utilesmoment'
+import UtilesSpinner from './paginas/UtilesSpinner'
+import UtilesSwipeable from './paginas/UtilesSwipeable'
 
 const router = createBrowserRouter([
   {
@@ -139,6 +144,26 @@ const router = createBrowserRouter([
       {
         path: "/formulario/finalform",
         element: <FormularioReactFinalForm/>,
+      },
+      {
+        path: "/utiles",
+        element: <Utiles/>,
+      },
+      {
+        path: "/utiles/dayjs",
+        element: <UtiliesDayjs/>,
+      },
+      {
+        path: "/utiles/moment",
+        element: <Utilesmoment/>,
+      },
+      {
+        path: "/utiles/spinner",
+        element: <UtilesSpinner/>,
+      },
+      {
+        path: "/utiles/swipeable",
+        element: <UtilesSwipeable/>,
       },
       {
         path: "*",

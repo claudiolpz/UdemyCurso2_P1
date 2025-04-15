@@ -2447,3 +2447,9 @@ h1{
   line-height: var(--text-4xl--line-height); /* calc(2.5 / 2.25) */
 }
 
+
+h3{
+  font-size: var(--text-2xl); 
+  line-height: var(--text-2xl--line-height); 
+}
+
