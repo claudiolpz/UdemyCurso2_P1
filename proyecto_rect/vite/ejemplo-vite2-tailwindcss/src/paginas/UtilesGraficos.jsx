@@ -1,34 +1,34 @@
-import { Link } from "react-router"
-import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
-import {Pie} from 'react-chartjs-2'
+import { Link } from "react-router";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
 const UtilesGraficos = () => {
-    ChartJS.register(ArcElement, Tooltip, Legend);
-    const data = {
-        labels: ['PHP', 'Python', 'Java', 'Javascript', 'C#', 'Golang'],
-        datasets: [
-          {
-            label: 'Número de desarrolladores',
-            data: [1200, 5501, 4300, 5231, 3214, 960],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-          },
+  ChartJS.register(ArcElement, Tooltip, Legend);
+  const data = {
+    labels: ["PHP", "Python", "Java", "Javascript", "C#", "Golang"],
+    datasets: [
+      {
+        label: "Número de desarrolladores",
+        data: [1200, 5501, 4300, 5231, 3214, 960],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
         ],
-      };
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -93,7 +93,7 @@ const UtilesGraficos = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-              Gráficos
+                Gráficos
               </span>
             </div>
           </li>
@@ -102,11 +102,11 @@ const UtilesGraficos = () => {
 
       <h1 className="text-center mb-2">Gráficos </h1>
       <hr />
-      <div className="w-3xs h-3xs" >
-      <Pie data={data} />
+      <div className="w-3xs h-3xs">
+        <Pie data={data} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UtilesGraficos
+export default UtilesGraficos;

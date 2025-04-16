@@ -1,11 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router'
-import setLocaleTo_ES_WithData from 'moment_spanish_locale'
-import moment from 'moment'
-setLocaleTo_ES_WithData(moment)
+import React from "react";
+import { Link } from "react-router";
+import setLocaleTo_ES_WithData from "moment_spanish_locale";
+import moment from "moment";
+setLocaleTo_ES_WithData(moment);
 
 const Utilesmoment = () => {
-    let fecha = new Date()
+  let fecha = new Date();
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -70,7 +70,7 @@ const Utilesmoment = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-              Moment
+                Moment
               </span>
             </div>
           </li>
@@ -80,29 +80,49 @@ const Utilesmoment = () => {
       <h1 className="text-center mb-2">Moment </h1>
       <hr />
 
-       <h3>Formatar Fecha</h3>
-      
-            <ul className="list-disc">
-              <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-              <li className="font-medium mt-2 ml-2">Fecha: {moment(fecha).format('dddd').replace(/\b[a-z]/g, c=> c.toUpperCase())} {moment(fecha).format('DD')} de {moment(fecha).format('MMMM').replace(/\b[a-z]/g, c=> c.toUpperCase())} de {moment(fecha).format('YYYY')} a las {moment(fecha).format('HH:mm:ss')}    
-               </li>
-               <li className="font-medium mt-2 ml-2">Fecha Corta: {moment(fecha).format('DD/MM/YYYY')}</li>
-               <li className="font-medium mt-2 ml-2">Fecha en timestamp: {fecha.valueOf()}</li>
-            </ul>
-            <hr className="mb-2 mt-2"/>
-            <h3>Calculo con fechas </h3>
-            <ul className="list-disc">
-              <li className="font-medium mt-2 ml-2">Fecha + 7 dias: {" "}
-                  {moment(fecha).add(7, 'day').format('DD/MM/YYYY')}</li>
-              <li className="font-medium mt-2 ml-2">Fecha - 7 dias: {" "}
-                  {moment(fecha).subtract(7, 'day').format('DD/MM/YYYY')}</li>
-              <li className="font-medium mt-2 ml-2">Fecha + 7 meses: {" "}
-                  {moment(fecha).subtract(7, 'month').format('DD/MM/YYYY')}</li>
-              <li className="font-medium mt-2 ml-2">Fecha + 7 años: {" "}
-                  {moment(fecha).add(7, 'year').format('DD/MM/YYYY')}</li>
-            </ul>
-    </div>
-  )
-}
+      <h3>Formatar Fecha</h3>
 
-export default Utilesmoment
+      <ul className="list-disc">
+        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
+        <li className="font-medium mt-2 ml-2">
+          Fecha:{" "}
+          {moment(fecha)
+            .format("dddd")
+            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
+          {moment(fecha).format("DD")} de{" "}
+          {moment(fecha)
+            .format("MMMM")
+            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
+          de {moment(fecha).format("YYYY")} a las{" "}
+          {moment(fecha).format("HH:mm:ss")}
+        </li>
+        <li className="font-medium mt-2 ml-2">
+          Fecha Corta: {moment(fecha).format("DD/MM/YYYY")}
+        </li>
+        <li className="font-medium mt-2 ml-2">
+          Fecha en timestamp: {fecha.valueOf()}
+        </li>
+      </ul>
+      <hr className="mb-2 mt-2" />
+      <h3>Calculo con fechas </h3>
+      <ul className="list-disc">
+        <li className="font-medium mt-2 ml-2">
+          Fecha + 7 dias: {moment(fecha).add(7, "day").format("DD/MM/YYYY")}
+        </li>
+        <li className="font-medium mt-2 ml-2">
+          Fecha - 7 dias:{" "}
+          {moment(fecha).subtract(7, "day").format("DD/MM/YYYY")}
+        </li>
+        <li className="font-medium mt-2 ml-2">
+          Fecha + 7 meses:{" "}
+          {moment(fecha).subtract(7, "month").format("DD/MM/YYYY")}
+        </li>
+        <li className="font-medium mt-2 ml-2">
+          Fecha + 7 años: {moment(fecha).add(7, "year").format("DD/MM/YYYY")}
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default Utilesmoment;
