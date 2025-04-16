@@ -37,6 +37,8 @@ import UtilesSpinner from './paginas/UtilesSpinner'
 import UtilesSwipeable from './paginas/UtilesSwipeable'
 import UtilesWebcam from './paginas/UtilesWebcam'
 import UtilesGraficos from './paginas/UtilesGraficos'
+import UtilesMapas1 from './paginas/UtilesMapas1'
+import UtilesMapas2 from './paginas/UtilesMapas2'
 
 const router = createBrowserRouter([
   {
@@ -174,6 +176,14 @@ const router = createBrowserRouter([
       {
         path: "/utiles/graficos",
         element: <UtilesGraficos/>,
+      },
+      {
+        path: "/utiles/mapas1",
+        element: <UtilesMapas1/>,
+      },
+      {
+        path: "/utiles/mapas2",
+        element: <UtilesMapas2/>,
       },
       {
         path: "*",
