@@ -1,14 +1,34 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router";
-import { paises } from "./../datos/datos";
-
-export function loader() {
-  const countrys = paises.toSorted((a,b)=> a.id - b.id);
-  return countrys;
-}
-
-const HooksuseLoaderData = () => {
-  const countrys = useLoaderData();
+import { Link } from "react-router"
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
+import {Pie} from 'react-chartjs-2'
+const UtilesGraficos = () => {
+    ChartJS.register(ArcElement, Tooltip, Legend);
+    const data = {
+        labels: ['PHP', 'Python', 'Java', 'Javascript', 'C#', 'Golang'],
+        datasets: [
+          {
+            label: 'Número de desarrolladores',
+            data: [1200, 5501, 4300, 5231, 3214, 960],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -48,10 +68,10 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <Link
-                to="/hooks"
+                to="/utiles"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Hooks
+                Utiles
               </Link>
             </div>
           </li>
@@ -73,53 +93,20 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                useLoaderData
+              Gráficos
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center">useLoaderData</h1>
+      <h1 className="text-center mb-2">Gráficos </h1>
       <hr />
-      {/* <ul className="list-disc">
-      {countrys.map((pais) => (
-                    <li key={pais.id}>
-                        <h1 className="text-center">Nombre: {pais.nombre}</h1>
-                        <h1 className="text-center">Dominio: {pais.dominio}</h1>
-                    </li>
-        ))}
-
-      </ul> */}
-
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3 text-center">
-                ID
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Nombre
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Dominio
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {countrys.map((pais) => (
-              <tr key={pais.id} className="border-b">
-                <th> ID: {pais.id} </th>
-                <td className="text-center">{pais.nombre}</td>
-                <td className="text-center">{pais.dominio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="w-3xs h-3xs" >
+      <Pie data={data} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HooksuseLoaderData;
+export default UtilesGraficos

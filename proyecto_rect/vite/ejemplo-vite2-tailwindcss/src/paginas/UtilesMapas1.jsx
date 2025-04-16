@@ -1,14 +1,7 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router";
-import { paises } from "./../datos/datos";
+import React from 'react'
+import { Link } from "react-router"
 
-export function loader() {
-  const countrys = paises.toSorted((a,b)=> a.id - b.id);
-  return countrys;
-}
-
-const HooksuseLoaderData = () => {
-  const countrys = useLoaderData();
+const UtilesMapas1 = () => {
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -48,10 +41,10 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <Link
-                to="/hooks"
+                to="/utiles"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Hooks
+                Utiles
               </Link>
             </div>
           </li>
@@ -73,53 +66,19 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                useLoaderData
+                Mapas Clásico
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center">useLoaderData</h1>
+      <h1 className="text-center mb-2">Mapas Clásico</h1>
       <hr />
-      {/* <ul className="list-disc">
-      {countrys.map((pais) => (
-                    <li key={pais.id}>
-                        <h1 className="text-center">Nombre: {pais.nombre}</h1>
-                        <h1 className="text-center">Dominio: {pais.dominio}</h1>
-                    </li>
-        ))}
 
-      </ul> */}
-
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3 text-center">
-                ID
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Nombre
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Dominio
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {countrys.map((pais) => (
-              <tr key={pais.id} className="border-b">
-                <th> ID: {pais.id} </th>
-                <td className="text-center">{pais.nombre}</td>
-                <td className="text-center">{pais.dominio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24654.24535655246!2d-70.68373147506657!3d-33.46214669288163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c506812b6823%3A0x1f66be2ba45f0d53!2sUDP%20Facultad%20de%20Ingenier%C3%ADa%20y%20Ciencias!5e0!3m2!1ses!2scl!4v1744758983480!5m2!1ses!2scl" width="600" height="450"  allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
     </div>
-  );
-};
+  )
+}
 
-export default HooksuseLoaderData;
+export default UtilesMapas1

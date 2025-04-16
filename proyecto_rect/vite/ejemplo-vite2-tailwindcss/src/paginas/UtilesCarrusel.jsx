@@ -1,14 +1,6 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router";
-import { paises } from "./../datos/datos";
-
-export function loader() {
-  const countrys = paises.toSorted((a,b)=> a.id - b.id);
-  return countrys;
-}
-
-const HooksuseLoaderData = () => {
-  const countrys = useLoaderData();
+import { Link } from 'react-router'
+import { imagenes } from '../datos/datos'
+const UtilesCarrusel = () => {
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -48,10 +40,10 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <Link
-                to="/hooks"
+                to="/utiles"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Hooks
+                Utiles
               </Link>
             </div>
           </li>
@@ -73,53 +65,44 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                useLoaderData
+                Carrusel
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center">useLoaderData</h1>
+      <h1 className="text-center mb-2">Carrusel </h1>
       <hr />
-      {/* <ul className="list-disc">
-      {countrys.map((pais) => (
-                    <li key={pais.id}>
-                        <h1 className="text-center">Nombre: {pais.nombre}</h1>
-                        <h1 className="text-center">Dominio: {pais.dominio}</h1>
-                    </li>
+      <div id="controls-carousel" className="relative w-full" data-carousel="static">
+    {/* <!-- Carousel wrapper --> */}
+    <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+        {imagenes.map((imagen)=>(
+            <div className="hidden duration-700 ease-in-out" data-carousel-item key={imagen.id}>
+            <img src={imagen.nombre} className="d-block w-100 h-100 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={imagen.titulo}/>
+        </div>
         ))}
-
-      </ul> */}
-
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3 text-center">
-                ID
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Nombre
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Dominio
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {countrys.map((pais) => (
-              <tr key={pais.id} className="border-b">
-                <th> ID: {pais.id} </th>
-                <td className="text-center">{pais.nombre}</td>
-                <td className="text-center">{pais.dominio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
     </div>
-  );
-};
+    {/* <!-- Slider controls --> */}
+    <button type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span className="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span className="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+    </div>
+  )
+}
 
-export default HooksuseLoaderData;
+export default UtilesCarrusel

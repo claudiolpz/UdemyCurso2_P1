@@ -1,14 +1,8 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router";
-import { paises } from "./../datos/datos";
+import { Link } from "react-router"
+import Map from 'react-map-gl/mapbox';
 
-export function loader() {
-  const countrys = paises.toSorted((a,b)=> a.id - b.id);
-  return countrys;
-}
-
-const HooksuseLoaderData = () => {
-  const countrys = useLoaderData();
+const UtilesMapas2 = () => {
+    const token = import.meta.env.VITE_REACT_APP_TOKEN_MAPBOX;
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -48,10 +42,10 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <Link
-                to="/hooks"
+                to="/utiles"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Hooks
+                Utiles
               </Link>
             </div>
           </li>
@@ -73,53 +67,32 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                useLoaderData
+                Mapas Mapbox
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center">useLoaderData</h1>
+      <h1 className="text-center mb-2">Mapas Mapbox </h1>
       <hr />
-      {/* <ul className="list-disc">
-      {countrys.map((pais) => (
-                    <li key={pais.id}>
-                        <h1 className="text-center">Nombre: {pais.nombre}</h1>
-                        <h1 className="text-center">Dominio: {pais.dominio}</h1>
-                    </li>
-        ))}
-
-      </ul> */}
-
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3 text-center">
-                ID
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Nombre
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Dominio
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {countrys.map((pais) => (
-              <tr key={pais.id} className="border-b">
-                <th> ID: {pais.id} </th>
-                <td className="text-center">{pais.nombre}</td>
-                <td className="text-center">{pais.dominio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      
+      <Map 
+      mapboxAccessToken={`${token}`}
+      initialViewState={{
+        longitude: -70.66061486142901,
+        latitude: -33.45241324583267, 
+        zoom: 14,
+        attributionControl:false,
+        itch:60,
+        bearing:-60
+      }}
+      style={{width:800, height:600}}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+    
+      />
     </div>
-  );
-};
+  )
+}
 
-export default HooksuseLoaderData;
+export default UtilesMapas2

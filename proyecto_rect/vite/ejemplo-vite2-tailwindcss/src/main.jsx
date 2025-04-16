@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
 import '../public/css/output.css'
+import './index.css'
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 
@@ -30,6 +31,17 @@ import FormulariosUseActionData, {action as procesarFormularioActionDate} from '
 import FormulariosFormik from './paginas/FormulariosFormik'
 import FormularioReactHookForm from './paginas/FormularioReactHookForm'
 import FormularioReactFinalForm from './paginas/FormularioReactFinalForm'
+import Utiles from './paginas/Utiles'
+import UtiliesDayjs from './paginas/UtilesDayjs'
+import Utilesmoment from './paginas/Utilesmoment'
+import UtilesSpinner from './paginas/UtilesSpinner'
+import UtilesSwipeable from './paginas/UtilesSwipeable'
+import UtilesWebcam from './paginas/UtilesWebcam'
+import UtilesGraficos from './paginas/UtilesGraficos'
+import UtilesMapas1 from './paginas/UtilesMapas1'
+import UtilesMapas2 from './paginas/UtilesMapas2'
+import UtilesModal from './paginas/UtilesModal'
+import UtilesCarrusel from './paginas/UtilesCarrusel'
 
 const router = createBrowserRouter([
   {
@@ -139,6 +151,51 @@ const router = createBrowserRouter([
       {
         path: "/formulario/finalform",
         element: <FormularioReactFinalForm/>,
+      },
+      {
+        path: "/utiles",
+        element: <Utiles/>,
+      },
+      {
+        path: "/utiles/dayjs",
+        element: <UtiliesDayjs/>,
+      },
+      {
+        path: "/utiles/moment",
+        element: <Utilesmoment/>,
+      },
+      {
+        path: "/utiles/spinner",
+        element: <UtilesSpinner/>,
+      },
+      {
+        path: "/utiles/swipeable",
+        element: <UtilesSwipeable/>,
+      },
+      {
+        path: "/utiles/webcam",
+        element: <UtilesWebcam/>,
+      },
+      {
+        path: "/utiles/graficos",
+        element: <UtilesGraficos/>,
+      },
+      {
+        path: "/utiles/mapas1",
+        element: <UtilesMapas1/>,
+      },
+      {
+        path: "/utiles/mapas2",
+        element: <UtilesMapas2/>,
+      },
+      
+      {
+        path: "/utiles/modal",
+        element: <UtilesModal/>,
+      },
+      {
+        path: "/utiles/carrusel",
+        element: <UtilesCarrusel/>,
       },
       {
         path: "*",

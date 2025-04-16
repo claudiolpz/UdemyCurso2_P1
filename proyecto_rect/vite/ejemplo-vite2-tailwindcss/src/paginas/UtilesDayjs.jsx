@@ -1,14 +1,10 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router";
-import { paises } from "./../datos/datos";
+import { Link } from "react-router"
+import dayjs from 'dayjs'
+import 'dayjs/locale/es'
 
-export function loader() {
-  const countrys = paises.toSorted((a,b)=> a.id - b.id);
-  return countrys;
-}
-
-const HooksuseLoaderData = () => {
-  const countrys = useLoaderData();
+const UtilesDayjs = () => {
+    let fecha = new Date();
+    dayjs.locale('es')
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -48,10 +44,10 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <Link
-                to="/hooks"
+                to="/utiles"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Hooks
+                Utiles
               </Link>
             </div>
           </li>
@@ -73,53 +69,38 @@ const HooksuseLoaderData = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                useLoaderData
+                Dayjs
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center">useLoaderData</h1>
+      <h1 className="text-center mb-2">Dayjs </h1>
       <hr />
-      {/* <ul className="list-disc">
-      {countrys.map((pais) => (
-                    <li key={pais.id}>
-                        <h1 className="text-center">Nombre: {pais.nombre}</h1>
-                        <h1 className="text-center">Dominio: {pais.dominio}</h1>
-                    </li>
-        ))}
+      <h3>Formatar Fecha</h3>
 
-      </ul> */}
-
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3 text-center">
-                ID
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Nombre
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Dominio
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {countrys.map((pais) => (
-              <tr key={pais.id} className="border-b">
-                <th> ID: {pais.id} </th>
-                <td className="text-center">{pais.nombre}</td>
-                <td className="text-center">{pais.dominio}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ul className="list-disc">
+        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
+        <li className="font-medium mt-2 ml-2">Fecha: {dayjs(fecha).format('dddd').replace(/\b[a-z]/g, c=> c.toUpperCase())} {dayjs(fecha).format('DD')} de {dayjs(fecha).format('MMMM').replace(/\b[a-z]/g, c=> c.toUpperCase())} de {dayjs(fecha).format('YYYY')} a las {dayjs(fecha).format('HH:mm:ss')}    
+         </li>
+         <li className="font-medium mt-2 ml-2">Fecha Corta: {dayjs(fecha).format('DD/MM/YYYY')}</li>
+         <li className="font-medium mt-2 ml-2">Fecha en timestamp: {fecha.valueOf()}</li>
+      </ul>
+      <hr className="mb-2 mt-2"/>
+      <h3>Calculo con fechas </h3>
+      <ul className="list-disc">
+        <li className="font-medium mt-2 ml-2">Fecha + 7 dias: {" "}
+            {dayjs(fecha).add(7, 'day').format('DD/MM/YYYY')}</li>
+        <li className="font-medium mt-2 ml-2">Fecha - 7 dias: {" "}
+            {dayjs(fecha).subtract(7, 'day').format('DD/MM/YYYY')}</li>
+        <li className="font-medium mt-2 ml-2">Fecha + 7 meses: {" "}
+            {dayjs(fecha).subtract(7, 'month').format('DD/MM/YYYY')}</li>
+        <li className="font-medium mt-2 ml-2">Fecha + 7 años: {" "}
+            {dayjs(fecha).add(7, 'year').format('DD/MM/YYYY')}</li>
+      </ul>
     </div>
-  );
-};
+  )
+}
 
-export default HooksuseLoaderData;
+export default UtilesDayjs
