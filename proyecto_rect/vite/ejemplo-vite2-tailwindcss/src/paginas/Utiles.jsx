@@ -27,6 +27,12 @@ const Utiles = () => {
               <li >
                   <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/utiles/graficos">Gráficos </Link>
               </li>
+              <li >
+                  <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/utiles/mapas1">Mapas clásicos</Link>
+              </li>
+              <li >
+                  <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/utiles/mapas2">Mapas Mapbox </Link>
+              </li>
           </ul>
 
           
