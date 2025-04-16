@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
 import '../public/css/output.css'
+import './index.css'
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 
@@ -39,6 +40,8 @@ import UtilesWebcam from './paginas/UtilesWebcam'
 import UtilesGraficos from './paginas/UtilesGraficos'
 import UtilesMapas1 from './paginas/UtilesMapas1'
 import UtilesMapas2 from './paginas/UtilesMapas2'
+import UtilesModal from './paginas/UtilesModal'
+import UtilesCarrusel from './paginas/UtilesCarrusel'
 
 const router = createBrowserRouter([
   {
@@ -174,6 +177,10 @@ const router = createBrowserRouter([
         element: <UtilesWebcam/>,
       },
       {
+        path: "/utiles/graficos",
+        element: <UtilesGraficos/>,
+      },
+      {
         path: "/utiles/mapas1",
         element: <UtilesMapas1/>,
       },
@@ -181,9 +188,14 @@ const router = createBrowserRouter([
         path: "/utiles/mapas2",
         element: <UtilesMapas2/>,
       },
+      
       {
-        path: "/utiles/graficos",
-        element: <UtilesGraficos/>,
+        path: "/utiles/modal",
+        element: <UtilesModal/>,
+      },
+      {
+        path: "/utiles/carrusel",
+        element: <UtilesCarrusel/>,
       },
       {
         path: "*",
