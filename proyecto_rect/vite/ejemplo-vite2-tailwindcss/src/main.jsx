@@ -44,6 +44,7 @@ import UtilesModal from './paginas/UtilesModal'
 import UtilesCarrusel from './paginas/UtilesCarrusel'
 import Material from './paginas/Material'
 import MaterialBotones from './paginas/MaterialBotones'
+import MaterialList from './paginas/MaterialList'
 
 const router = createBrowserRouter([
   {
@@ -206,6 +207,10 @@ const router = createBrowserRouter([
       {
         path: "/material/botones",
         element: <MaterialBotones/>,
+      },
+      {
+        path: "/material/list",
+        element: <MaterialList/>,
       },
       {
         path: "*",
