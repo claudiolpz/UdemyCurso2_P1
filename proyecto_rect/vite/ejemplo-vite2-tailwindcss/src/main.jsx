@@ -50,6 +50,7 @@ import MaterialTable from './paginas/MaterialTable'
 import MaterialAcordeon from './paginas/MaterialAcordeon'
 import MaterialStepper from './paginas/MaterialStepper'
 import MaterialTabs from './paginas/MaterialTabs'
+import MaterialDialog from './paginas/MaterialDialog'
 
 const router = createBrowserRouter([
   {
@@ -236,6 +237,10 @@ const router = createBrowserRouter([
       {
         path: "/material/tabs",
         element: <MaterialTabs/>,
+      },
+      {
+        path: "/material/dialog",
+        element: <MaterialDialog/>,
       },
       {
         path: "*",

@@ -30,6 +30,9 @@ const Material = () => {
                     <li >
                         <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/tabs">Tabs</Link>
                     </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/dialog">Dialog</Link>
+                    </li>
                 </ul>
             </div>
     </div>
