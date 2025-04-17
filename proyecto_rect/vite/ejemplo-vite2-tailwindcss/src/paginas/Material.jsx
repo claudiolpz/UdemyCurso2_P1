@@ -18,6 +18,15 @@ const Material = () => {
                     <li >
                         <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/drawer">Drawer </Link>
                     </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/table">Table o Data Grid </Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/acordion">Acordeon</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/stepper">Stepper</Link>
+                    </li>
                 </ul>
             </div>
     </div>

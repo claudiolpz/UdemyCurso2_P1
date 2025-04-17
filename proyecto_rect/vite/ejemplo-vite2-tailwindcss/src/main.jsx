@@ -46,6 +46,9 @@ import Material from './paginas/Material'
 import MaterialBotones from './paginas/MaterialBotones'
 import MaterialList from './paginas/MaterialList'
 import MaterialDrawer from './paginas/MaterialDrawer'
+import MaterialTable from './paginas/MaterialTable'
+import MaterialAcordeon from './paginas/MaterialAcordeon'
+import MaterialStepper from './paginas/MaterialStepper'
 
 const router = createBrowserRouter([
   {
@@ -216,6 +219,18 @@ const router = createBrowserRouter([
       {
         path: "/material/drawer",
         element: <MaterialDrawer/>,
+      },
+      {
+        path: "/material/table",
+        element: <MaterialTable/>,
+      },
+      {
+        path: "/material/acordion",
+        element: <MaterialAcordeon/>,
+      },
+      {
+        path: "/material/stepper",
+        element: <MaterialStepper/>,
       },
       {
         path: "*",
