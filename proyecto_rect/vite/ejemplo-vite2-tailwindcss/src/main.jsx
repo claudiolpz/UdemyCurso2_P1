@@ -54,6 +54,9 @@ import MaterialDialog from './paginas/MaterialDialog'
 import MaterialCard from './paginas/MaterialCard'
 import MaterialAutocomplete from './paginas/MaterialAutocomplete'
 import MaterialDatePicker from './paginas/MaterialDatePicker'
+import AlmacenamientoLocal from './paginas/AlmacenamientoLocal'
+import AlmacenamientoLocalLocalStorage from './paginas/AlmacenamientoLocalLocalStorage'
+import AlmacenamientoLocalSessionStorage from './paginas/AlmacenamientoLocalSessionStorage'
 
 const router = createBrowserRouter([
   {
@@ -256,6 +259,18 @@ const router = createBrowserRouter([
       {
         path: "/material/datepicker",
         element: <MaterialDatePicker/>,
+      },
+      {
+        path: "/localstorage",
+        element: <AlmacenamientoLocal/>,
+      },
+      {
+        path: "/localstorage/localstorage",
+        element: <AlmacenamientoLocalLocalStorage/>,
+      },
+      {
+        path: "/localstorage/sessionstorage",
+        element: <AlmacenamientoLocalSessionStorage/>,
       },
       {
         path: "*",
