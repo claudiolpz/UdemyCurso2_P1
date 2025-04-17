@@ -1,25 +1,25 @@
-import { useRef } from 'react';
-import { Link } from 'react-router';
+import { useRef } from "react";
+import { Link } from "react-router";
 
 const UtilesModal = () => {
   const modalRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
   const openModal = () => {
-    modalRef.current.classList.remove('hidden');
-    modalRef.current.removeAttribute('inert');
-    modalRef.current.querySelector('button').focus(); // Mueve el foco al primer botón del modal
+    modalRef.current.classList.remove("hidden");
+    modalRef.current.removeAttribute("inert");
+    modalRef.current.querySelector("button").focus(); // Mueve el foco al primer botón del modal
   };
 
   const closeModal = () => {
-    modalRef.current.classList.add('hidden');
-    modalRef.current.setAttribute('inert', '');
+    modalRef.current.classList.add("hidden");
+    modalRef.current.setAttribute("inert", "");
     toggleButtonRef.current.focus(); // Devuelve el foco al botón que activó el modal
   };
 
   return (
     <div>
-        <nav className="flex" aria-label="Breadcrumb">
+      <nav className="flex" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <Link
@@ -89,15 +89,15 @@ const UtilesModal = () => {
       </nav>
 
       <h1 className="text-center mb-2">MODAL </h1>
-      <hr className='mb-4'/>
-      <div className='max-w-sm mx-auto text-center'>
-      <button
-        ref={toggleButtonRef}
-        onClick={openModal}
-        className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        Modal
-      </button>
+      <hr className="mb-4" />
+      <div className="max-w-sm mx-auto text-center">
+        <button
+          ref={toggleButtonRef}
+          onClick={openModal}
+          className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Modal
+        </button>
       </div>
       <div
         ref={modalRef}

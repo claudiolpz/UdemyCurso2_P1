@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from "react-router"
+import React from "react";
+import { Link } from "react-router";
 
 const UtilesMapas1 = () => {
   return (
@@ -76,9 +76,16 @@ const UtilesMapas1 = () => {
       <h1 className="text-center mb-2">Mapas Clásico</h1>
       <hr />
 
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24654.24535655246!2d-70.68373147506657!3d-33.46214669288163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c506812b6823%3A0x1f66be2ba45f0d53!2sUDP%20Facultad%20de%20Ingenier%C3%ADa%20y%20Ciencias!5e0!3m2!1ses!2scl!4v1744758983480!5m2!1ses!2scl" width="600" height="450"  allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24654.24535655246!2d-70.68373147506657!3d-33.46214669288163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c506812b6823%3A0x1f66be2ba45f0d53!2sUDP%20Facultad%20de%20Ingenier%C3%ADa%20y%20Ciencias!5e0!3m2!1ses!2scl!4v1744758983480!5m2!1ses!2scl"
+        width="600"
+        height="450"
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
-  )
-}
+  );
+};
 
-export default UtilesMapas1
+export default UtilesMapas1;

@@ -1,8 +1,8 @@
-import { Link } from "react-router"
-import Map from 'react-map-gl/mapbox';
+import { Link } from "react-router";
+import Map from "react-map-gl/mapbox";
 
 const UtilesMapas2 = () => {
-    const token = import.meta.env.VITE_REACT_APP_TOKEN_MAPBOX;
+  const token = import.meta.env.VITE_REACT_APP_TOKEN_MAPBOX;
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -76,23 +76,22 @@ const UtilesMapas2 = () => {
 
       <h1 className="text-center mb-2">Mapas Mapbox </h1>
       <hr />
-      
-      <Map 
-      mapboxAccessToken={`${token}`}
-      initialViewState={{
-        longitude: -70.66061486142901,
-        latitude: -33.45241324583267, 
-        zoom: 14,
-        attributionControl:false,
-        itch:60,
-        bearing:-60
-      }}
-      style={{width:800, height:600}}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
-    
+
+      <Map
+        mapboxAccessToken={`${token}`}
+        initialViewState={{
+          longitude: -70.66061486142901,
+          latitude: -33.45241324583267,
+          zoom: 14,
+          attributionControl: false,
+          itch: 60,
+          bearing: -60,
+        }}
+        style={{ width: 800, height: 600 }}
+        mapStyle="mapbox://styles/mapbox/streets-v9"
       />
     </div>
-  )
-}
+  );
+};
 
-export default UtilesMapas2
+export default UtilesMapas2;

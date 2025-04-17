@@ -1,11 +1,42 @@
-import React from "react";
 import { Link } from "react-router";
-import setLocaleTo_ES_WithData from "moment_spanish_locale";
-import moment from "moment";
-setLocaleTo_ES_WithData(moment);
+import { DataGrid } from "@mui/x-data-grid";
 
-const Utilesmoment = () => {
-  let fecha = new Date();
+const MaterialTable = () => {
+  const columns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "firstName", headerName: "First name", width: 130 },
+    { field: "lastName", headerName: "E-mail", width: 130 },
+    {
+      field: "age",
+      headerName: "Edad",
+      type: "number",
+      width: 90,
+    },
+    {
+      field: "fullName",
+      headerName: "Nombre completo",
+      description:
+        "Esta comulna tiene un captador de valor y no se puede ordenar.",
+      sortable: false,
+      width: 160,
+      valueGetter: (value, row) =>
+        `${row.firstName || ""} ${row.lastName || ""}`,
+    },
+  ];
+
+  const rows = [
+    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  ];
+  const paginationModel = { page: 0, pageSize: 5 };
+
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -45,10 +76,10 @@ const Utilesmoment = () => {
                 />
               </svg>
               <Link
-                to="/utiles"
+                to="/material"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Utiles
+                Material
               </Link>
             </div>
           </li>
@@ -70,59 +101,27 @@ const Utilesmoment = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Moment
+                Table o Data Grid
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Moment </h1>
-      <hr />
+      <h1 className="text-center mb-2">Table o Data Grid</h1>
+      <hr className="mb-4" />
 
-      <h3>Formatar Fecha</h3>
-
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha:{" "}
-          {moment(fecha)
-            .format("dddd")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          {moment(fecha).format("DD")} de{" "}
-          {moment(fecha)
-            .format("MMMM")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          de {moment(fecha).format("YYYY")} a las{" "}
-          {moment(fecha).format("HH:mm:ss")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha Corta: {moment(fecha).format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha en timestamp: {fecha.valueOf()}
-        </li>
-      </ul>
-      <hr className="mb-2 mt-2" />
-      <h3>Calculo con fechas </h3>
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 dias: {moment(fecha).add(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha - 7 dias:{" "}
-          {moment(fecha).subtract(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 meses:{" "}
-          {moment(fecha).subtract(7, "month").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 años: {moment(fecha).add(7, "year").format("DD/MM/YYYY")}
-        </li>
-      </ul>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{ pagination: { paginationModel } }}
+          pageSizeOptions={[5, 10]}
+          checkboxSelection
+        />
+      </div>
     </div>
   );
 };
 
-export default Utilesmoment;
+export default MaterialTable;

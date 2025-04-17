@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
-import setLocaleTo_ES_WithData from "moment_spanish_locale";
-import moment from "moment";
-setLocaleTo_ES_WithData(moment);
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from "@mui/material/Slide";
 
-const Utilesmoment = () => {
-  let fecha = new Date();
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+const MaterialDialog = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleAbrir = () => {
+    alert("ALERTA PRUEBA");
+  };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -45,10 +64,10 @@ const Utilesmoment = () => {
                 />
               </svg>
               <Link
-                to="/utiles"
+                to="/material"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Utiles
+                Material
               </Link>
             </div>
           </li>
@@ -70,59 +89,41 @@ const Utilesmoment = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Moment
+                Dialog
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Moment </h1>
-      <hr />
-
-      <h3>Formatar Fecha</h3>
-
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha:{" "}
-          {moment(fecha)
-            .format("dddd")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          {moment(fecha).format("DD")} de{" "}
-          {moment(fecha)
-            .format("MMMM")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          de {moment(fecha).format("YYYY")} a las{" "}
-          {moment(fecha).format("HH:mm:ss")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha Corta: {moment(fecha).format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha en timestamp: {fecha.valueOf()}
-        </li>
-      </ul>
-      <hr className="mb-2 mt-2" />
-      <h3>Calculo con fechas </h3>
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 dias: {moment(fecha).add(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha - 7 dias:{" "}
-          {moment(fecha).subtract(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 meses:{" "}
-          {moment(fecha).subtract(7, "month").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 años: {moment(fecha).add(7, "year").format("DD/MM/YYYY")}
-        </li>
-      </ul>
+      <h1 className="text-center mb-2">Dialog </h1>
+      <hr className="mb-4" />
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Abrir confirmar
+      </Button>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Alguna Pregunta?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Texto para la advertencia con contenido html mira:
+            <strong>Negritas</strong>
+            <br />
+            <img src="/images/civiv.jpg" alt="" />
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={handleAbrir}>Agregar</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
 
-export default Utilesmoment;
+export default MaterialDialog;

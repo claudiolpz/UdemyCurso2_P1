@@ -1,11 +1,26 @@
-import React from "react";
 import { Link } from "react-router";
-import setLocaleTo_ES_WithData from "moment_spanish_locale";
-import moment from "moment";
-setLocaleTo_ES_WithData(moment);
+import { useState } from "react";
+import ListSubheader from "@mui/material/ListSubheader";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+import SendIcon from "@mui/icons-material/Send";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import StarBorder from "@mui/icons-material/StarBorder";
 
-const Utilesmoment = () => {
-  let fecha = new Date();
+const MaterialList = () => {
+  const [open, setOpen] = useState();
+  const handleClick = () => {
+    setOpen(!open);
+  };
+  const handleMenu = (menu) => {
+    alert("mail");
+  };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -45,10 +60,10 @@ const Utilesmoment = () => {
                 />
               </svg>
               <Link
-                to="/utiles"
+                to="/material"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Utiles
+                Material
               </Link>
             </div>
           </li>
@@ -70,59 +85,63 @@ const Utilesmoment = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Moment
+                List
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Moment </h1>
-      <hr />
-
-      <h3>Formatar Fecha</h3>
-
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha:{" "}
-          {moment(fecha)
-            .format("dddd")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          {moment(fecha).format("DD")} de{" "}
-          {moment(fecha)
-            .format("MMMM")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          de {moment(fecha).format("YYYY")} a las{" "}
-          {moment(fecha).format("HH:mm:ss")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha Corta: {moment(fecha).format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha en timestamp: {fecha.valueOf()}
-        </li>
-      </ul>
-      <hr className="mb-2 mt-2" />
-      <h3>Calculo con fechas </h3>
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 dias: {moment(fecha).add(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha - 7 dias:{" "}
-          {moment(fecha).subtract(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 meses:{" "}
-          {moment(fecha).subtract(7, "month").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 años: {moment(fecha).add(7, "year").format("DD/MM/YYYY")}
-        </li>
-      </ul>
+      <h1 className="text-center mb-2">List </h1>
+      <hr className="mb-4" />
+      <List
+        sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        aria-labelledby="nested-list-subheader"
+        component="nav"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            TITULO
+          </ListSubheader>
+        }
+      >
+        <ListItemButton onClick={handleMenu}>
+          <ListItemIcon>
+            <SendIcon />
+          </ListItemIcon>
+          <ListItemText primary="Envio E-Mail" />
+        </ListItemButton>
+        <ListItemButton>
+          <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Borradores" />
+        </ListItemButton>
+        <ListItemButton onClick={handleClick}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+          {open ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="Destacados" />
+              </ListItemButton>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="Archivados" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+      </List>
     </div>
   );
 };
 
-export default Utilesmoment;
+export default MaterialList;

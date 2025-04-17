@@ -42,6 +42,18 @@ import UtilesMapas1 from './paginas/UtilesMapas1'
 import UtilesMapas2 from './paginas/UtilesMapas2'
 import UtilesModal from './paginas/UtilesModal'
 import UtilesCarrusel from './paginas/UtilesCarrusel'
+import Material from './paginas/Material'
+import MaterialBotones from './paginas/MaterialBotones'
+import MaterialList from './paginas/MaterialList'
+import MaterialDrawer from './paginas/MaterialDrawer'
+import MaterialTable from './paginas/MaterialTable'
+import MaterialAcordeon from './paginas/MaterialAcordeon'
+import MaterialStepper from './paginas/MaterialStepper'
+import MaterialTabs from './paginas/MaterialTabs'
+import MaterialDialog from './paginas/MaterialDialog'
+import MaterialCard from './paginas/MaterialCard'
+import MaterialAutocomplete from './paginas/MaterialAutocomplete'
+import MaterialDatePicker from './paginas/MaterialDatePicker'
 
 const router = createBrowserRouter([
   {
@@ -196,6 +208,54 @@ const router = createBrowserRouter([
       {
         path: "/utiles/carrusel",
         element: <UtilesCarrusel/>,
+      },
+      {
+        path: "/material",
+        element: <Material/>,
+      },
+      {
+        path: "/material/botones",
+        element: <MaterialBotones/>,
+      },
+      {
+        path: "/material/list",
+        element: <MaterialList/>,
+      },
+      {
+        path: "/material/drawer",
+        element: <MaterialDrawer/>,
+      },
+      {
+        path: "/material/table",
+        element: <MaterialTable/>,
+      },
+      {
+        path: "/material/acordion",
+        element: <MaterialAcordeon/>,
+      },
+      {
+        path: "/material/stepper",
+        element: <MaterialStepper/>,
+      },
+      {
+        path: "/material/tabs",
+        element: <MaterialTabs/>,
+      },
+      {
+        path: "/material/dialog",
+        element: <MaterialDialog/>,
+      },
+      {
+        path: "/material/card",
+        element: <MaterialCard/>,
+      },
+      {
+        path: "/material/autocomplete",
+        element: <MaterialAutocomplete/>,
+      },
+      {
+        path: "/material/datepicker",
+        element: <MaterialDatePicker/>,
       },
       {
         path: "*",

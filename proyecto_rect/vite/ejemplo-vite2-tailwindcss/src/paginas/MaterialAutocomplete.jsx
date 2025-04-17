@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
-import setLocaleTo_ES_WithData from "moment_spanish_locale";
-import moment from "moment";
-setLocaleTo_ES_WithData(moment);
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import { countries } from "../datos/datos";
+import { Button } from "@mui/material";
 
-const Utilesmoment = () => {
-  let fecha = new Date();
+const MaterialAutocomplete = () => {
+  const [dato, setDato] = useState(null);
+
+  const handleCampo = (e) => {
+    e.preventDefault();
+    alert(dato.label);
+  };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -45,10 +52,10 @@ const Utilesmoment = () => {
                 />
               </svg>
               <Link
-                to="/utiles"
+                to="/material"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Utiles
+                Material
               </Link>
             </div>
           </li>
@@ -70,59 +77,66 @@ const Utilesmoment = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Moment
+                Autocomplete
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Moment </h1>
-      <hr />
-
-      <h3>Formatar Fecha</h3>
-
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha:{" "}
-          {moment(fecha)
-            .format("dddd")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          {moment(fecha).format("DD")} de{" "}
-          {moment(fecha)
-            .format("MMMM")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          de {moment(fecha).format("YYYY")} a las{" "}
-          {moment(fecha).format("HH:mm:ss")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha Corta: {moment(fecha).format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha en timestamp: {fecha.valueOf()}
-        </li>
-      </ul>
-      <hr className="mb-2 mt-2" />
-      <h3>Calculo con fechas </h3>
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 dias: {moment(fecha).add(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha - 7 dias:{" "}
-          {moment(fecha).subtract(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 meses:{" "}
-          {moment(fecha).subtract(7, "month").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 años: {moment(fecha).add(7, "year").format("DD/MM/YYYY")}
-        </li>
-      </ul>
+      <h1 className="text-center mb-2">Autocomplete </h1>
+      <hr className="mb-4" />
+      <form
+        onSubmit={handleCampo}
+        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+      >
+        <Autocomplete
+          id="country-select-demo"
+          sx={{ width: 300 }}
+          options={countries}
+          autoHighlight
+          getOptionLabel={(option) => option.label}
+          renderOption={(props, option) => {
+            const { key, ...optionProps } = props;
+            return (
+              <Box
+                key={key}
+                component="li"
+                sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                {...optionProps}
+              >
+                <img
+                  loading="lazy"
+                  width="20"
+                  srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+                  src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                  alt=""
+                />
+                {option.label} ({option.code}) +{option.phone}
+              </Box>
+            );
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Choose a country"
+              slotProps={{
+                htmlInput: {
+                  ...params.inputProps,
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                },
+              }}
+            />
+          )}
+          onChange={(event, value) => setDato(value)} // Correcto
+        />
+        <hr />
+        <Button variant="contained" type="submit">
+          Enviar
+        </Button>
+      </form>
     </div>
   );
 };
 
-export default Utilesmoment;
+export default MaterialAutocomplete;

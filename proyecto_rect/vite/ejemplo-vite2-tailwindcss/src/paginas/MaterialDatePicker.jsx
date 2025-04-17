@@ -1,11 +1,30 @@
-import React from "react";
 import { Link } from "react-router";
-import setLocaleTo_ES_WithData from "moment_spanish_locale";
-import moment from "moment";
-setLocaleTo_ES_WithData(moment);
+import dayjs from "dayjs";
+import { useState } from "react";
+import "dayjs/locale/es";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { Button, Stack, TextField } from "@mui/material";
 
-const Utilesmoment = () => {
-  let fecha = new Date();
+dayjs.locale("es");
+
+const MaterialDatePicker = () => {
+  const [fecha1, setFecha1] = useState(null); // Inicializado como null
+  const [hora1, setHora1] = useState(null); // Inicializado como null
+
+  const handleFormulario = (e) => {
+    e.preventDefault();
+    if (fecha1 && hora1) {
+      alert(
+        `Fecha: ${dayjs(fecha1).format("DD/MM/YYYY")} | Hora: ${dayjs(hora1).format("H:mm")}`
+      );
+    } else {
+      alert("Por favor selecciona una fecha y hora válidas.");
+    }
+  };
+
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -45,10 +64,10 @@ const Utilesmoment = () => {
                 />
               </svg>
               <Link
-                to="/utiles"
+                to="/material"
                 className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
               >
-                Utiles
+                Material
               </Link>
             </div>
           </li>
@@ -70,59 +89,39 @@ const Utilesmoment = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Moment
+                Date Picker
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Moment </h1>
-      <hr />
-
-      <h3>Formatar Fecha</h3>
-
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">Fecha: {fecha.toString()}</li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha:{" "}
-          {moment(fecha)
-            .format("dddd")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          {moment(fecha).format("DD")} de{" "}
-          {moment(fecha)
-            .format("MMMM")
-            .replace(/\b[a-z]/g, (c) => c.toUpperCase())}{" "}
-          de {moment(fecha).format("YYYY")} a las{" "}
-          {moment(fecha).format("HH:mm:ss")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha Corta: {moment(fecha).format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha en timestamp: {fecha.valueOf()}
-        </li>
-      </ul>
-      <hr className="mb-2 mt-2" />
-      <h3>Calculo con fechas </h3>
-      <ul className="list-disc">
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 dias: {moment(fecha).add(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha - 7 dias:{" "}
-          {moment(fecha).subtract(7, "day").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 meses:{" "}
-          {moment(fecha).subtract(7, "month").format("DD/MM/YYYY")}
-        </li>
-        <li className="font-medium mt-2 ml-2">
-          Fecha + 7 años: {moment(fecha).add(7, "year").format("DD/MM/YYYY")}
-        </li>
-      </ul>
+      <h1 className="text-center mb-2">Date Picker </h1>
+      <hr className="mb-4" />
+      <form onSubmit={handleFormulario}>
+        <Stack spacing={3}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DesktopDatePicker
+              label="Fecha 1"
+              inputFormat="DD/MM/YYYY"
+              value={fecha1}
+              onChange={(newValue) => setFecha1(newValue)} // Asegura que sea una instancia válida de dayjs
+              TextField={(params) => <TextField {...params} />}
+            />
+            <TimePicker
+              label="Hora 1"
+              value={hora1}
+              onChange={(newValue) => setHora1(newValue)} // Asegura que sea una instancia válida de dayjs
+              TextField={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </Stack>
+        <Button variant="contained" type="submit" sx={{ mt: 2 }}>
+          Enviar
+        </Button>
+      </form>
     </div>
   );
 };
 
-export default Utilesmoment;
+export default MaterialDatePicker;
