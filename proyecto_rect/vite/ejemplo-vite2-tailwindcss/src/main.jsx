@@ -49,6 +49,7 @@ import MaterialDrawer from './paginas/MaterialDrawer'
 import MaterialTable from './paginas/MaterialTable'
 import MaterialAcordeon from './paginas/MaterialAcordeon'
 import MaterialStepper from './paginas/MaterialStepper'
+import MaterialTabs from './paginas/MaterialTabs'
 
 const router = createBrowserRouter([
   {
@@ -231,6 +232,10 @@ const router = createBrowserRouter([
       {
         path: "/material/stepper",
         element: <MaterialStepper/>,
+      },
+      {
+        path: "/material/tabs",
+        element: <MaterialTabs/>,
       },
       {
         path: "*",
