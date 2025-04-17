@@ -53,6 +53,7 @@ import MaterialTabs from './paginas/MaterialTabs'
 import MaterialDialog from './paginas/MaterialDialog'
 import MaterialCard from './paginas/MaterialCard'
 import MaterialAutocomplete from './paginas/MaterialAutocomplete'
+import MaterialDatePicker from './paginas/MaterialDatePicker'
 
 const router = createBrowserRouter([
   {
@@ -251,6 +252,10 @@ const router = createBrowserRouter([
       {
         path: "/material/autocomplete",
         element: <MaterialAutocomplete/>,
+      },
+      {
+        path: "/material/datepicker",
+        element: <MaterialDatePicker/>,
       },
       {
         path: "*",
