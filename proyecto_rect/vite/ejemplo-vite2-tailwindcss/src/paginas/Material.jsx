@@ -36,6 +36,10 @@ const Material = () => {
                     <li >
                         <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/card">Card</Link>
                     </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/autocomplete">Autocomplete</Link>
+                    </li>
+                    
                 </ul>
             </div>
     </div>

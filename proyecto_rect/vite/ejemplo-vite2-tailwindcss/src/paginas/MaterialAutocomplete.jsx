@@ -1,29 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import { countries } from "../datos/datos";
+import { Button } from "@mui/material";
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+const MaterialAutocomplete = () => {
+  const [dato, setDato] = useState(null);
 
-const MaterialDialog = () => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleAbrir = () => {
-    alert("ALERTA PRUEBA");
+  const handleCampo = (e) => {
+    e.preventDefault();
+    alert(dato.label);
   };
   return (
     <div>
@@ -89,41 +77,66 @@ const MaterialDialog = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Dialog
+                Autocomplete
               </span>
             </div>
           </li>
         </ol>
       </nav>
 
-      <h1 className="text-center mb-2">Dialog </h1>
+      <h1 className="text-center mb-2">Autocomplete </h1>
       <hr className="mb-4" />
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Abrir confirmar
-      </Button>
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
+      <form
+        onSubmit={handleCampo}
+        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
       >
-        <DialogTitle>{"Alguna Pregunta?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Texto para la advertencia con contenido html mira:
-            <strong>Negritas</strong>
-            <br />
-            <img src="/images/civiv.jpg" alt="" />
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancelar</Button>
-          <Button onClick={handleAbrir}>Agregar</Button>
-        </DialogActions>
-      </Dialog>
+        <Autocomplete
+          id="country-select-demo"
+          sx={{ width: 300 }}
+          options={countries}
+          autoHighlight
+          getOptionLabel={(option) => option.label}
+          renderOption={(props, option) => {
+            const { key, ...optionProps } = props;
+            return (
+              <Box
+                key={key}
+                component="li"
+                sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                {...optionProps}
+              >
+                <img
+                  loading="lazy"
+                  width="20"
+                  srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+                  src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                  alt=""
+                />
+                {option.label} ({option.code}) +{option.phone}
+              </Box>
+            );
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Choose a country"
+              slotProps={{
+                htmlInput: {
+                  ...params.inputProps,
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                },
+              }}
+            />
+          )}
+          onChange={(event, value) => setDato(value)} // Correcto
+        />
+        <hr />
+        <Button variant="contained" type="submit">
+          Enviar
+        </Button>
+      </form>
     </div>
   );
 };
 
-export default MaterialDialog;
+export default MaterialAutocomplete;

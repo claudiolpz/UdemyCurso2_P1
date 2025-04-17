@@ -52,6 +52,7 @@ import MaterialStepper from './paginas/MaterialStepper'
 import MaterialTabs from './paginas/MaterialTabs'
 import MaterialDialog from './paginas/MaterialDialog'
 import MaterialCard from './paginas/MaterialCard'
+import MaterialAutocomplete from './paginas/MaterialAutocomplete'
 
 const router = createBrowserRouter([
   {
@@ -246,6 +247,10 @@ const router = createBrowserRouter([
       {
         path: "/material/card",
         element: <MaterialCard/>,
+      },
+      {
+        path: "/material/autocomplete",
+        element: <MaterialAutocomplete/>,
       },
       {
         path: "*",

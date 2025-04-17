@@ -1,53 +1,52 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import PhpIcon from '@mui/icons-material/Php';
-import AppleIcon from '@mui/icons-material/Apple';
-import DesktopMacIcon from '@mui/icons-material/DesktopMac';
+import React, { useState } from "react";
+import { Link } from "react-router";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import PhpIcon from "@mui/icons-material/Php";
+import AppleIcon from "@mui/icons-material/Apple";
+import DesktopMacIcon from "@mui/icons-material/DesktopMac";
 
 function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-      </div>
-    );
-  }
-  
-  CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
-  
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
+}
 
 const MaterialTabs = () => {
-    
-    const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0);
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div>
-       <nav className="flex" aria-label="Breadcrumb">
+      <nav className="flex" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <Link
@@ -109,7 +108,7 @@ const MaterialTabs = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-              Tabs
+                Tabs
               </span>
             </div>
           </li>
@@ -118,27 +117,37 @@ const MaterialTabs = () => {
 
       <h1 className="text-center mb-2">Tabs </h1>
       <hr className="mb-4" />
-      <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Item One" icon={<PhpIcon/>}{...a11yProps(0)} />{/*  INDEX ES EL QUE MUESTERA ABAJO*/}
-          <Tab label="Item Two" icon={<AppleIcon/>} {...a11yProps(1)} />
-          <Tab label="Item Three" icon={<DesktopMacIcon/>}{...a11yProps(2)} />
-        </Tabs>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Item One" icon={<PhpIcon />} {...a11yProps(0)} />
+            {/*  INDEX ES EL QUE MUESTERA ABAJO*/}
+            <Tab label="Item Two" icon={<AppleIcon />} {...a11yProps(1)} />
+            <Tab
+              label="Item Three"
+              icon={<DesktopMacIcon />}
+              {...a11yProps(2)}
+            />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          {" "}
+          {/*  INDEX ES EL QUE MUESTERA ARRIBA*/}
+          Item One
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          Item Two
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          Item Three
+        </CustomTabPanel>
       </Box>
-      <CustomTabPanel value={value} index={0}>  {/*  INDEX ES EL QUE MUESTERA ARRIBA*/}
-        Item One
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel>
-    </Box>
-      
     </div>
-  )
-}
+  );
+};
 
-export default MaterialTabs
+export default MaterialTabs;
