@@ -57,6 +57,7 @@ import MaterialDatePicker from './paginas/MaterialDatePicker'
 import AlmacenamientoLocal from './paginas/AlmacenamientoLocal'
 import AlmacenamientoLocalLocalStorage from './paginas/AlmacenamientoLocalLocalStorage'
 import AlmacenamientoLocalSessionStorage from './paginas/AlmacenamientoLocalSessionStorage'
+import ContexEjemplo from './paginas/ContexEjemplo'
 
 const router = createBrowserRouter([
   {
@@ -271,6 +272,10 @@ const router = createBrowserRouter([
       {
         path: "/localstorage/sessionstorage",
         element: <AlmacenamientoLocalSessionStorage/>,
+      },
+      {
+        path: "/context",
+        element: <ContexEjemplo/>,
       },
       {
         path: "*",
