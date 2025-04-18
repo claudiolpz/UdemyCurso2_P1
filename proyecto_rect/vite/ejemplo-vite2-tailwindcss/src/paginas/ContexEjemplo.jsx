@@ -1,4 +1,4 @@
-import { useContext,useState } from "react";
+import { useContext } from "react";
 import EjemploContext from "../context/EjemploProvider";
 
 const ContexEjemplo = () => {
