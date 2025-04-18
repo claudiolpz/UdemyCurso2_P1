@@ -1,5 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { store } from './redux/store/store'
+import { Provider } from 'react-redux'
+
 import '../public/css/output.css'
 import './index.css'
 
@@ -58,6 +61,7 @@ import AlmacenamientoLocal from './paginas/AlmacenamientoLocal'
 import AlmacenamientoLocalLocalStorage from './paginas/AlmacenamientoLocalLocalStorage'
 import AlmacenamientoLocalSessionStorage from './paginas/AlmacenamientoLocalSessionStorage'
 import ContexEjemplo from './paginas/ContexEjemplo'
+import ReduxEjemplo from './paginas/ReduxEjemplo'
 
 const router = createBrowserRouter([
   {
@@ -278,6 +282,10 @@ const router = createBrowserRouter([
         element: <ContexEjemplo/>,
       },
       {
+        path: "/redux",
+        element: <ReduxEjemplo/>,
+      },
+      {
         path: "*",
         element: <Error404 />,
       }
@@ -287,6 +295,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Provider store={store}>
     <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </StrictMode>,
 )
