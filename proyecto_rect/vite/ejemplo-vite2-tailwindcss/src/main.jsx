@@ -62,7 +62,10 @@ import AlmacenamientoLocalLocalStorage from './paginas/AlmacenamientoLocalLocalS
 import AlmacenamientoLocalSessionStorage from './paginas/AlmacenamientoLocalSessionStorage'
 import ContexEjemplo from './paginas/ContexEjemplo'
 import ReduxEjemplo from './paginas/ReduxEjemplo'
-
+import AxiosComponent from './paginas/AxiosComponent'
+import AxiosCategoria, {loader as listarCategorias} from './paginas/AxiosCategoria'
+import AxiosCategoriasAdd, {action as addCategorias} from './paginas/AxiosCategoriasAdd'
+import AxiosCategoriasEdit,{loader as editCategoriasLoader, action as editCategorias} from './paginas/AxiosCategoriasEdit'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -284,6 +287,26 @@ const router = createBrowserRouter([
       {
         path: "/redux",
         element: <ReduxEjemplo/>,
+      },
+      {
+        path: "/axios",
+        element: <AxiosComponent/>,
+      },
+      {
+        path: "/axios/categorias",
+        element: <AxiosCategoria/>,
+        loader:listarCategorias
+      },
+      {
+        path: "/axios/categorias/add",
+        element: <AxiosCategoriasAdd/>,
+        action:addCategorias
+      },
+      {
+        path: "/axios/categorias/editar/:id",
+        element: <AxiosCategoriasEdit/>,
+        loader: editCategoriasLoader,
+        action: editCategorias
       },
       {
         path: "*",
