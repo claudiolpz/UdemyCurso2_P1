@@ -82,3 +82,21 @@ export async function deleteCategorias(id) {
   })
   return datos;
 }
+
+export async function getProductos(page) {
+  let datos = axios
+    .get(`${import.meta.env.VITE_API_URL}productos?page=${page}`, {
+      headers: cabeceros,
+    })
+    .then((response) => {
+      if (response.status == 200) {
+        return response.data;
+      } else {
+        console.log("Comunicacion Fallida");
+      }
+    })
+    .catch((err) => {
+      console.log("Comunicacion Fallida");
+    });
+    return datos;
+}

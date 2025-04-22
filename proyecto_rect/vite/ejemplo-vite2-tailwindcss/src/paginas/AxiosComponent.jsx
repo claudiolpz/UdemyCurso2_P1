@@ -10,7 +10,7 @@ const AxiosComponent = () => {
             <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/axios/categorias">Categorias</Link>
         </li>
         <li>
-            <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/axios/productos">Productos</Link>
+            <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/axios/productos/1">Productos</Link>
         </li>
       </div>
     </div>
