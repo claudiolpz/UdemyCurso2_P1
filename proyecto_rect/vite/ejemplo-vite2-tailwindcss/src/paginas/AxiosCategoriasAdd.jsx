@@ -1,4 +1,4 @@
-import { Link, Form, redirect } from "react-router";
+import { Link, Form, redirect, useActionData } from "react-router";
 import { addCategorias } from "../servicios/ApiAxios";
 import Swal from "sweetalert2";
 
@@ -29,6 +29,7 @@ export async function action({ request }) {
 }
 
 const AxiosCategoriasAdd = () => {
+  const errores = useActionData();
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -122,8 +123,11 @@ const AxiosCategoriasAdd = () => {
           </li>
         </ol>
       </nav>
+      
       <h1 className="text-center mb-2">Crear </h1>
       <hr className="mb-4" />
+      {errores?.length && <Validaciones errores={errores}/>}
+
       <Form method="post" className="max-w-sm mx-auto" noValidate>
         <div className="mb-5">
           <label

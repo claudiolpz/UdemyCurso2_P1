@@ -1,15 +1,18 @@
 import { Link, useLoaderData, useNavigate, useParams } from "react-router";
-import { getProductos } from "../servicios/ApiAxios";
+import { getProductosPorCategorias, getCategoriasPorSlug } from "../servicios/ApiAxios";
 import { acortarTexto, formatearNumero } from "../helpers/helpers";
+import Swal from "sweetalert2";
+
 
 export async function loader({ params }) {
-  let datos = await getProductos(params.page);
-  return datos;
+  let datos = await getProductosPorCategorias(params.slug, params.page);
+  let categoria = await getCategoriasPorSlug(params.slug)
+  return [datos, categoria]
 }
 
-const AxiosProductos = () => {
-  let datos = useLoaderData();
-  const { page } = useParams();
+const AxiosProductosCategoria = () => {
+  const [datos, categoria] = useLoaderData();
+  const {page} = useParams();
   let anterior;
   let siguiente;
 
@@ -31,6 +34,7 @@ const AxiosProductos = () => {
   for (let i = 1; i <= datos.links; i++) {
     paginas[i] = i;
   }
+  
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -77,6 +81,31 @@ const AxiosProductos = () => {
               </Link>
             </div>
           </li>
+          <li>
+            <div className="flex items-center">
+              <svg
+                className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 6 10"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m1 9 4-4-4-4"
+                />
+              </svg>
+              <Link
+                to="/axios/productos/1"
+                className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+              >
+                Productos
+              </Link>
+            </div>
+          </li>
           <li aria-current="page">
             <div className="flex items-center">
               <svg
@@ -95,13 +124,13 @@ const AxiosProductos = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Productos
+                Categoria: {categoria.nombre}
               </span>
             </div>
           </li>
         </ol>
       </nav>
-      <h1 className="text-center mb-2">Productos ({datos.total} registros en total) ({datos.por_pagina} registros por pagina)</h1>
+      <h1 className="text-center mb-2">Productos categoria: {categoria.nombre} ({datos.total} registros en total) ({datos.por_pagina} registros en esta pagina)</h1>
       <hr className="mb-4" />
       <Link
         type="button"
@@ -110,7 +139,7 @@ const AxiosProductos = () => {
       >
         <i className="fas fa-plus"></i> Crear
       </Link>
-      <hr className="mb-4" />
+      <hr className="mb-4 mt-2" />
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         {Object.values(datos).length == 0 ? (
@@ -261,7 +290,7 @@ const AxiosProductos = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AxiosProductos;
+export default AxiosProductosCategoria

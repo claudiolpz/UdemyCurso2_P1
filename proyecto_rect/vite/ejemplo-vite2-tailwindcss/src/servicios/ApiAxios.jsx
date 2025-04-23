@@ -100,3 +100,47 @@ export async function getProductos(page) {
     });
     return datos;
 }
+export async function getCategoriasPorSlug(slug) {
+  let datos = axios
+    .get(`${import.meta.env.VITE_API_URL}categorias-slug/${slug}`, {
+      headers: cabeceros,
+    })
+    .then((response) => {
+      if (response.status == 200) {
+        return response.data;
+      } else {
+        console.log("Comunicacion Fallida");
+      }
+    })
+    .catch((err) => {
+      console.log("Comunicacion Fallida");
+    });
+    return datos;
+}
+export async function getProductosPorCategorias(slug,page) {
+  let datos = axios
+    .get(`${import.meta.env.VITE_API_URL}productos-buscar/${slug}?page=${page}`, {
+      headers: cabeceros,
+    })
+    .then((response) => {
+      if (response.status == 200) {
+        return response.data;
+      } else {
+        console.log("Comunicacion Fallida");
+      }
+    })
+    .catch((err) => {
+      console.log("Comunicacion Fallida");
+    });
+    return datos;
+}
+export async function addProductos(request) {
+   let datos = axios.post(`${import.meta.env.VITE_API_URL}productos`, request, {
+      headers: cabeceros
+    }).then((response) => {
+      return response.status;
+    }).catch((error) => {
+      console.log(error);
+    });
+  return datos;
+}

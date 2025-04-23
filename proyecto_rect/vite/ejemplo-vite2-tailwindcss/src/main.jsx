@@ -67,6 +67,8 @@ import AxiosCategoria, {loader as listarCategorias} from './paginas/AxiosCategor
 import AxiosCategoriasAdd, {action as addCategorias} from './paginas/AxiosCategoriasAdd'
 import AxiosCategoriasEdit,{loader as editCategoriasLoader, action as editCategorias} from './paginas/AxiosCategoriasEdit'
 import AxiosProductos, {loader as listarProductos} from './paginas/AxiosProductos'
+import AxiosProductosCategoria, {loader as listarProductosCategorias} from './paginas/AxiosProductosCategoria'
+import AxiosProductosAdd, {loader as listarCategoriasAddProductos, action as addProductos} from './paginas/AxiosProductosAdd'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -313,6 +315,19 @@ const router = createBrowserRouter([
         path: "/axios/productos/:page",
         element: <AxiosProductos/>,
         loader:listarProductos
+  
+      },
+      {
+        path: "/axios/productos/categorias/:slug/:page",
+        element: <AxiosProductosCategoria/>,
+        loader:listarProductosCategorias
+  
+      },
+      {
+        path: "/axios/productos/add",
+        element: <AxiosProductosAdd/>,
+        loader:listarCategoriasAddProductos,
+        action:addProductos
   
       },
       {
