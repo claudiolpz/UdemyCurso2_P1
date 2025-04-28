@@ -1,6 +1,7 @@
-import { Link, useLoaderData, useNavigate, useParams } from "react-router";
-import { getProductos } from "../servicios/ApiAxios";
+import { Link, Navigate, useLoaderData, useNavigate, useParams } from "react-router";
+import { getProductos, deleteProductos } from "../servicios/ApiAxios";
 import { acortarTexto, formatearNumero } from "../helpers/helpers";
+import Swal from "sweetalert2";
 
 export async function loader({ params }) {
   let datos = await getProductos(params.page);
@@ -8,6 +9,7 @@ export async function loader({ params }) {
 }
 
 const AxiosProductos = () => {
+  const navigate = useNavigate();
   let datos = useLoaderData();
   const { page } = useParams();
   let anterior;
@@ -30,6 +32,37 @@ const AxiosProductos = () => {
   let paginas = [];
   for (let i = 1; i <= datos.links; i++) {
     paginas[i] = i;
+  }
+  const dentroEliminar = async (id) =>{
+    if(await deleteProductos(id)===201){
+      Swal.fire({
+        icon:"success",
+        title:"Ok",
+        text:"Se elimino el registro correctamente"
+      });
+      navigate(0);
+    }else{
+      return Swal.fire({
+        icon:'error',
+        title:'Ops',
+        text:"No es posible eliminar el registro por este momento"
+      })
+    }
+  }
+  const handleEliminar = (id)=>{
+    Swal.fire({
+      title:'Realmente quiere eliminar el registro?',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonText:"SI",
+      cancelButtonText:"NO",
+      confirmButtonColor:"#3085d6",
+      cancelButtonColor:"#d33"     
+    }).then((result)=>{
+      if(result.isConfirmed){
+        dentroEliminar(id);
+      }
+    })
   }
   return (
     <div>
@@ -189,7 +222,7 @@ const AxiosProductos = () => {
                       </Link>
                     </td>
                     <td>
-                      <Link to={`/axios/categorias/editar/${dato.id}`}>
+                      <Link to={`/axios/productos/editar/${dato.id}`}>
                         <i className="fas fa-edit mr-2"></i>
                       </Link>
                       <Link

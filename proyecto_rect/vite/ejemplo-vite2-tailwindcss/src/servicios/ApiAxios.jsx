@@ -144,3 +144,42 @@ export async function addProductos(request) {
     });
   return datos;
 }
+export async function getProductosPorId(id) {
+  let datos = axios
+    .get(`${import.meta.env.VITE_API_URL}productos/${id}`, {
+      headers: cabeceros,
+    })
+    .then((response) => {
+      if (response.status == 200) {
+        return response.data;
+      } else {
+        console.log("Comunicacion Fallida");
+      }
+    })
+    .catch((err) => {
+      console.log("Comunicacion Fallida");
+    });
+    return datos;
+}
+export async function editProductos(request, id) {
+  let datos = axios.put(`${import.meta.env.VITE_API_URL}productos/${id}`,
+    request, {
+      headers: cabeceros
+    }
+  ).then((response)=>{
+    return response.status
+  }).catch((error)=>{
+    console.log(error)
+  })
+  return datos;
+}
+export async function deleteProductos(id) {
+  let datos = axios.delete(`${import.meta.env.VITE_API_URL}productos/${id}`, {
+     headers: cabeceros
+   }).then((response) => {
+     return response.status;
+   }).catch((error) => {
+     console.log(error);
+   });
+ return datos;
+}
