@@ -41,3 +41,36 @@ export async function addCategorias(datos) {
       })
       await respuesta.json()
   }
+  export async function getProductos(page) {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos?page=${page}`, {
+      headers: cabeceros,
+    });
+    const resultado = await respuesta.json();
+    return resultado;
+  }
+  export async function addProductos(datos) {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos`, {
+        method: "POST",
+        body: JSON.stringify(datos),
+        headers: cabeceros
+    });
+     await respuesta.json();
+  }
+  export async function editProductos(datos, id) {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(datos),
+        headers: cabeceros
+      })
+      await respuesta.json()
+  }
+  export async function deleteProductos(id) {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos/${id}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(),
+        headers: cabeceros
+      })
+      await respuesta.json()
+  }

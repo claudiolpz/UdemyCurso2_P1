@@ -72,6 +72,7 @@ import AxiosProductosAdd, {loader as listarCategoriasAddProductos, action as add
 import AxiosProductosEdit, {loader as listarCategoriasEditProductos, action as editProductos} from './paginas/AxiosProductosEdit'
 import FetchComponent from './paginas/FetchComponent'
 import FetchCategorias, {loader as listarCategoriasFetch} from './paginas/FetchCategorias'
+import FetchProductos, {loader as listarProductosFetch} from './paginas/FetchProductos'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -348,6 +349,12 @@ const router = createBrowserRouter([
         path: "/fetch/categorias",
         element: <FetchCategorias/>,
         loader:listarCategoriasFetch
+      },
+      {
+        path: "/fetch/productos/:page",
+        element: <FetchProductos/>,
+        loader:listarProductosFetch
+  
       },
       {
         path: "*",
