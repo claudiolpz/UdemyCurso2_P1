@@ -13,7 +13,7 @@ const UtilesModal = () => {
 
   const closeModal = () => {
     modalRef.current.classList.add("hidden");
-    modalRef.current.setAttribute("inert", "");
+    modalRef.current.setAttribute("inert", "true");
     toggleButtonRef.current.focus(); // Devuelve el foco al botón que activó el modal
   };
 
@@ -105,7 +105,7 @@ const UtilesModal = () => {
         data-modal-backdrop="static"
         tabIndex="-1"
         className="hidden fixed inset-0 z-50 flex items-center justify-center"
-        inert
+        inert="true"
       >
         {/* Fondo negro */}
         <div className="absolute inset-0 bg-black/50"></div>

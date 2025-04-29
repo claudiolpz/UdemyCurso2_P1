@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 
 import '../public/css/output.css'
 import './index.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css' 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 
@@ -70,6 +70,9 @@ import AxiosProductos, {loader as listarProductos} from './paginas/AxiosProducto
 import AxiosProductosCategoria, {loader as listarProductosCategorias} from './paginas/AxiosProductosCategoria'
 import AxiosProductosAdd, {loader as listarCategoriasAddProductos, action as addProductos} from './paginas/AxiosProductosAdd'
 import AxiosProductosEdit, {loader as listarCategoriasEditProductos, action as editProductos} from './paginas/AxiosProductosEdit'
+import FetchComponent from './paginas/FetchComponent'
+import FetchCategorias, {loader as listarCategoriasFetch} from './paginas/FetchCategorias'
+import FetchProductos, {loader as listarProductosFetch} from './paginas/FetchProductos'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -339,9 +342,25 @@ const router = createBrowserRouter([
   
       },
       {
+        path: "/fetch",
+        element: <FetchComponent/>,
+      },
+      {
+        path: "/fetch/categorias",
+        element: <FetchCategorias/>,
+        loader:listarCategoriasFetch
+      },
+      {
+        path: "/fetch/productos/:page",
+        element: <FetchProductos/>,
+        loader:listarProductosFetch
+  
+      },
+      {
         path: "*",
         element: <Error404 />,
       }
+      
     ],
   },
 ]);
