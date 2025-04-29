@@ -93,6 +93,9 @@ const AccesoRegistro = () => {
         <hr />
         <button className="btn btn-primary">Enviar</button>
       </Form>
+        <Link to="/acesso/login" className="btn btn-secondary mt-8">
+            Ya tienes cuenta? Inicia sesion
+        </Link>
     </div>
   );
 };
