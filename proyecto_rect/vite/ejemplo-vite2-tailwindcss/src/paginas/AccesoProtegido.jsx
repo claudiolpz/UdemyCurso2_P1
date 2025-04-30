@@ -12,6 +12,7 @@ const AccesoProtegido = () => {
   return (
     <div>
       <h1>Protegido</h1>
+      <p>Hola {localStorage.getItem('tokenNombre')}</p>
     </div>
   )
 }

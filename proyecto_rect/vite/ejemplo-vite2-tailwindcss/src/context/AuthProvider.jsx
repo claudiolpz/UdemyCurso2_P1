@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     if(!auth && localStorage.getItem("tokenTamila") == null){
       window.location='/acceso/login';
     }
+    // setAuth(true);
   }
   const handleIniciarSesion = (t, nombre) => {
     localStorage.setItem("tokenTamila", t);
