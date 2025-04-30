@@ -73,6 +73,10 @@ import AxiosProductosEdit, {loader as listarCategoriasEditProductos, action as e
 import FetchComponent from './paginas/FetchComponent'
 import FetchCategorias, {loader as listarCategoriasFetch} from './paginas/FetchCategorias'
 import FetchProductos, {loader as listarProductosFetch} from './paginas/FetchProductos'
+import AccesoRegistro, {action as registroAction} from './paginas/AccesoRegistro'
+import AccesoLogin from './paginas/AccesoLogin'
+import AccesoProtegido from './paginas/AccesoProtegido'
+import AccesoProtegido2 from './paginas/AccesoProtegido2'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -355,6 +359,27 @@ const router = createBrowserRouter([
         element: <FetchProductos/>,
         loader:listarProductosFetch
   
+      },
+      {
+        path: "/acceso/registro",
+        element: <AccesoRegistro/>,
+        action: registroAction,
+
+      },
+      {
+        path: "/acceso/login",
+        element: <AccesoLogin/>,
+
+      },
+      {
+        path: "/acceso/protegido",
+        element: <AccesoProtegido/>,
+
+      },
+      {
+        path: "/acceso/protegido2",
+        element: <AccesoProtegido2/>,
+
       },
       {
         path: "*",
