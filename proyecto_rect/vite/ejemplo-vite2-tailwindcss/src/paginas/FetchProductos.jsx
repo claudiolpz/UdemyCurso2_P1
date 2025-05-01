@@ -598,7 +598,7 @@ const FetchProductos = () => {
                   <button
                     type="button"
                     onClick={handleClose}
-                    className="ms-3 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg px-4 py-2"
+                    className="!ml-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg px-4 py-2"
                   >
                     Cancelar
                   </button>

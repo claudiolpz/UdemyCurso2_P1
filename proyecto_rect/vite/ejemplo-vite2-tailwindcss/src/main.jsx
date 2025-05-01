@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 
 import '../public/css/output.css'
 import './index.css'
-import 'bootstrap/dist/css/bootstrap.min.css' 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 
