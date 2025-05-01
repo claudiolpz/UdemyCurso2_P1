@@ -56,7 +56,7 @@ const FetchProductos = () => {
     if (categorias_id == 0) {
       Swal.fire({
         icon: "error",
-        title: "Oops... 1",
+        title: "Oops...",
         text: "Seleccione una categoria",
       });
       setCategoria_Id("0");
@@ -65,7 +65,7 @@ const FetchProductos = () => {
     if (nombre == 0 || nombre == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops... 2",
+        title: "Oops...",
         text: "Ingrese un nombre",
       });
       setNombre("");
@@ -74,7 +74,7 @@ const FetchProductos = () => {
     if (descripcion == 0 || descripcion == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops... 3",
+        title: "Oops...",
         text: "Ingrese una descripcion",
       });
       setDescripcion("");
@@ -83,7 +83,7 @@ const FetchProductos = () => {
     if (precio == 0 || precio == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops... 4",
+        title: "Oops...",
         text: "Ingrese un precio",
       });
       setPrecio("");
@@ -92,7 +92,7 @@ const FetchProductos = () => {
     if (stock == 0 || stock == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops... 6",
+        title: "Oops...",
         text: "Ingrese un stock",
       });
       setStock("");
@@ -117,7 +117,7 @@ const FetchProductos = () => {
         console.log(error);
         Swal.fire({
           icon: "error",
-          title: "Oops... 7",
+          title: "Oops...",
           text: "Error al crear el producto",
         });
       }
@@ -144,7 +144,7 @@ const FetchProductos = () => {
         console.log(error);
         Swal.fire({
           icon: "error",
-          title: "Oops... 9",
+          title: "Oops...",
           text: "Error al editar el producto",
         });
       }
