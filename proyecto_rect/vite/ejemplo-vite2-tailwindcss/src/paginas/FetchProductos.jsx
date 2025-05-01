@@ -8,10 +8,9 @@ import {
 } from "../servicios/ApiFetch";
 import { acortarTexto, formatearNumero } from "../helpers/helpers";
 import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import Swal from "sweetalert2";
-import { set } from "react-hook-form";
 
+import Swal from "sweetalert2";
+import Modal from "../componentes/Modal";
 export async function loader({ params }) {
   let datos = await getProductos(params.page);
   let categorias = await getCategorias();
@@ -25,9 +24,9 @@ const FetchProductos = () => {
   const [categorias_id, setCategoria_Id] = useState("0");
   const [acciones, setAcciones] = useState(1);
   const [accionesId, setAccionesId] = useState();
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [datos, categorias] = useLoaderData();
   const { page } = useParams();
   let anterior;
@@ -57,7 +56,7 @@ const FetchProductos = () => {
     if (categorias_id == 0) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Oops... 1",
         text: "Seleccione una categoria",
       });
       setCategoria_Id("0");
@@ -66,7 +65,7 @@ const FetchProductos = () => {
     if (nombre == 0 || nombre == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Oops... 2",
         text: "Ingrese un nombre",
       });
       setNombre("");
@@ -75,7 +74,7 @@ const FetchProductos = () => {
     if (descripcion == 0 || descripcion == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Oops... 3",
         text: "Ingrese una descripcion",
       });
       setDescripcion("");
@@ -84,7 +83,7 @@ const FetchProductos = () => {
     if (precio == 0 || precio == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Oops... 4",
         text: "Ingrese un precio",
       });
       setPrecio("");
@@ -93,7 +92,7 @@ const FetchProductos = () => {
     if (stock == 0 || stock == "") {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Oops... 6",
         text: "Ingrese un stock",
       });
       setStock("");
@@ -106,7 +105,7 @@ const FetchProductos = () => {
           descripcion: descripcion,
           precio: precio,
           stock: stock,
-          categorias_id: categorias_id
+          categorias_id: categorias_id,
         });
         Swal.fire({
           icon: "success",
@@ -118,20 +117,20 @@ const FetchProductos = () => {
         console.log(error);
         Swal.fire({
           icon: "error",
-          title: "Oops...",
+          title: "Oops... 7",
           text: "Error al crear el producto",
         });
       }
     }
-    if(acciones == 2) {
+    if (acciones == 2) {
       try {
         await editProductos(
           {
             nombre: nombre,
-          descripcion: descripcion,
-          precio: precio,
-          stock: stock,
-          categorias_id: categorias_id
+            descripcion: descripcion,
+            precio: precio,
+            stock: stock,
+            categorias_id: categorias_id,
           },
           accionesId
         );
@@ -145,7 +144,7 @@ const FetchProductos = () => {
         console.log(error);
         Swal.fire({
           icon: "error",
-          title: "Oops...",
+          title: "Oops... 9",
           text: "Error al editar el producto",
         });
       }
@@ -159,7 +158,7 @@ const FetchProductos = () => {
     setPrecio("");
     setStock("");
     setCategoria_Id("0");
-    handleShow();
+    handleOpen();
   };
   const handleEditar = async (modulo) => {
     setAcciones(2);
@@ -169,26 +168,26 @@ const FetchProductos = () => {
     setPrecio(modulo.precio);
     setStock(modulo.stock);
     setCategoria_Id(modulo.categorias_id);
-    handleShow();
+    handleOpen();
   };
-const dentroEliminar = async (id) => {
-  try {
-    await deleteProductos(id);
-    Swal.fire({
-      icon: "success",
-      title: "Exito",
-      text: "Producto eliminado correctamente.",
-    });
-    navigate(0);
-  } catch (error) {
-    console.error("Error al eliminar producto:", error);
-    Swal.fire({
+  const dentroEliminar = async (id) => {
+    try {
+      await deleteProductos(id);
+      Swal.fire({
+        icon: "success",
+        title: "Exito",
+        text: "Producto eliminado correctamente.",
+      });
+      navigate(0);
+    } catch (error) {
+      console.error("Error al eliminar producto:", error);
+      Swal.fire({
         icon: "error",
         title: "Error",
         text: "No se pudo eliminar el producto.",
-    });
-  }
-}
+      });
+    }
+  };
   const handleEliminar = (id) => {
     Swal.fire({
       title: "¿Estas seguro?",
@@ -203,7 +202,7 @@ const dentroEliminar = async (id) => {
         dentroEliminar(id);
       }
     });
-  }
+  };
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -297,7 +296,7 @@ const dentroEliminar = async (id) => {
           >
             <svg
               className="shrink-0 inline w-4 h-4 me-3"
-              ariaHidden="true"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
             >
@@ -443,125 +442,171 @@ const dentroEliminar = async (id) => {
           </div>
         )}
       </div>
-      <Modal size="lg" show={show} onHide={handleClose} id="listingModal">
-        <Modal.Header>
-          <Modal.Title>
-            {acciones === 1 ? "Crear Producto" : "Editar Producto"}
-          </Modal.Title>
-          <button
-            type="button"
-            className="btn-close"
-            onClick={handleClose}
-          ></button>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <div className="row gy-3">
-              <div className="col-lg-12">
-                <label htmlFor="categorias_id" className="form-label">
-                  Categoria
-                </label>
-                <select
-                  value={categorias_id}
-                  id="categorias_id"
-                  name="categorias_id"
-                  onChange={(e) => setCategoria_Id(e.target.value)}
-                  className="form-control"
+      <Modal open={open} onClose={handleClose}>
+        <div
+          id="crud-modal"
+          tabIndex="-1"
+          className="fixed inset-0 z-50 flex items-center justify-center"
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="relative p-4 w-full max-w-2xl max-h-full">
+            <div className="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+              <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  {acciones === 1 ? "Crear Producto" : "Editar Producto"}
+                </h3>
+                <button
+                  type="button"
+                  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={handleClose}
                 >
-                  <option value="0">Seleccione una categoria</option>
-                  {categorias.map((categoria) => (
-                    <option key={categoria.id} value={categoria.id}>
-                      {categoria.nombre}
-                    </option>
-                  ))}
-                </select>
+                  <svg
+                    className="w-3 h-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
               </div>
-              <div className="col-lg-12">
-                <label htmlFor="nombre" className="form-label">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                  className="form-control"
-                  id="nombre"
-                  name="nombre"
-                  htmlFor="nombre"
-                  placeholder="Nombre del producto"
-                />
-              </div>
-              <div className="col-lg-12">
-                <label htmlFor="descripcion" className="form-label">
-                  Descripcion
-                </label>
-                <textarea
-                  value={descripcion}
-                  onChange={(e) => setDescripcion(e.target.value)}
-                  className="form-control"
-                  id="descripcion"
-                  name="descripcion"
-                  placeholder="Descripcion del producto"
-                ></textarea>
-              </div>
-              <div className="col-lg-6">
-                <label htmlFor="precio" className="form-label">
-                  Precio
-                </label>
-                <input
-                  type="number"
-                  value={precio}
-                  onChange={(e) => setPrecio(e.target.value)}
-                  className="form-control"
-                  id="precio"
-                  name="precio"
-                  placeholder="Precio del producto"
-                />
-              </div>
-              <div className="col-lg-12 mb-3">
-                <label htmlFor="stock" className="form-label">
-                  Stock
-                </label>
-                <select
-                  value={stock}
-                  id="stock"
-                  name="stock"
-                  onChange={(e) => setStock(e.target.value)}
-                  className="form-control"
-                >
-                  {(() => {
-                    let rows = [];
-                    for (let i = 0; i <= 100; i++) {
-                      rows.push(
+              <form onSubmit={handleSubmit}>
+                <div className="space-y-4 p-6">
+                  <div>
+                    <label
+                      htmlFor="categorias_id"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Categoría
+                    </label>
+                    <select
+                      value={categorias_id}
+                      id="categorias_id"
+                      name="categorias_id"
+                      onChange={(e) => setCategoria_Id(e.target.value)}
+                      className="block w-full p-2.5 h-12 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="0">Seleccione una categoría</option>
+                      {categorias.map((categoria) => (
+                        <option key={categoria.id} value={categoria.id}>
+                          {categoria.nombre}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="nombre"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      value={nombre}
+                      onChange={(e) => setNombre(e.target.value)}
+                      className="block w-full p-2.5 h-12 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                      id="nombre"
+                      name="nombre"
+                      placeholder="Nombre del producto"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="descripcion"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Descripción
+                    </label>
+                    <textarea
+                      value={descripcion}
+                      onChange={(e) => setDescripcion(e.target.value)}
+                      className="block w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                      id="descripcion"
+                      name="descripcion"
+                      placeholder="Descripción del producto"
+                      rows="4"
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="precio"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Precio
+                    </label>
+                    <input
+                      type="number"
+                      value={precio}
+                      onChange={(e) => setPrecio(e.target.value)}
+                      className="block w-full p-2.5 h-12 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                      id="precio"
+                      name="precio"
+                      placeholder="Precio del producto"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="stock"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Stock
+                    </label>
+                    <select
+                      value={stock}
+                      id="stock"
+                      name="stock"
+                      onChange={(e) => setStock(e.target.value)}
+                      className="block w-full p-2.5 h-12 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      {Array.from({ length: 101 }, (_, i) => (
                         <option key={i} value={i}>
                           {i}
                         </option>
-                      );
-                    }
-                    return rows;
-                  })()}
-                </select>
-              </div>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex space-x-4 p-6">
+                  <button
+                    type="submit"
+                    className=" text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-4 py-2"
+                  >
+                    {acciones === 1 ? (
+                      <>
+                        <i className="fas fa-plus"></i> Crear
+                      </>
+                    ) : (
+                      <>
+                        <i className="fas fa-edit"></i> Editar
+                      </>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="ms-3 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg px-4 py-2"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
             </div>
-            <div className="row">
-              <div className="col-6"></div>
-              <div className="col-6 d-flex justify-content-end">
-           
-                <button className="btn btn-primary">
-                  {acciones === 1 ? (
-                    <>
-                      <i className="fas fa-plus"></i> Crear
-                    </>
-                  ) : (
-                    <>
-                      <i className="fas fa-edit"></i> Editar
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-          </form>
-        </Modal.Body>
+          </div>
+        </div>
       </Modal>
     </div>
   );
