@@ -46,56 +46,84 @@ export async function action({ request }) {
 const AccesoRegistro = () => {
   const errores = useActionData();
   return (
-    <div>
-      <h1>Registro</h1>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold text-center mb-6">Registro</h1>
       {errores?.length && <Validaciones errores={errores} />}
       <Form method="post" noValidate>
-        <div className="form-group">
-          <label htmlFor="nombre">Nombre</label>
+        <div className="mb-4">
+          <label
+            htmlFor="nombre"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Nombre
+          </label>
           <input
             type="text"
             name="nombre"
             id="nombre"
             placeholder="Nombre"
-            className="form-control"
+            className="block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Email
+          </label>
           <input
             type="text"
             name="email"
             id="email"
             placeholder="Email"
-            className="form-control"
+            className="block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        <div className="mb-4">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Contraseña
+          </label>
           <input
             type="password"
             name="password"
             id="password"
-            placeholder="Password"
-            className="form-control"
+            placeholder="Contraseña"
+            className="block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password2">Repetir Password</label>
+        <div className="mb-4">
+          <label
+            htmlFor="password2"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Repetir Contraseña
+          </label>
           <input
             type="password"
             name="password2"
             id="password2"
-            placeholder="Repetir Password"
-            className="form-control"
+            placeholder="Repetir Contraseña"
+            className="block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
-        <hr />
-        <button className="btn btn-primary">Enviar</button>
+        <hr className="my-6" />
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg focus:ring-4 focus:ring-blue-300"
+        >
+          Enviar
+        </button>
       </Form>
-        <Link to="/acesso/login" className="btn btn-secondary mt-8">
-            Ya tienes cuenta? Inicia sesion
-        </Link>
+      <Link
+        to="/acceso/login"
+        className="block text-center bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 rounded-lg mt-4"
+      >
+        Ya tienes cuenta? Inicia sesión
+      </Link>
     </div>
   );
 };
