@@ -68,6 +68,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/"
+                    title="Home"
                     className="block py-2 pl-3 pr-4 text-white bg-purple-600 rounded lg:bg-transparent lg:text-purple-400 lg:p-0 dark:text-white"
                     aria-current="page"
                   >
@@ -77,6 +78,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/rutas"
+                    title="Rutas"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Rutas
@@ -85,6 +87,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/basicos"
+                    title="Basicos"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Basicos
@@ -93,6 +96,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/formularios"
+                    title="Formularios"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Formularios
@@ -101,6 +105,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/hooks"
+                    title="Hooks"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Hooks
@@ -109,6 +114,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/utiles"
+                    title="Utiles"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Útiles
@@ -117,6 +123,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/material"
+                    title="Material"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Material
@@ -125,6 +132,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/localstorage"
+                    title="LocalStorage"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Almacenamiento Local
@@ -133,6 +141,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/context"
+                    title="Context"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Context
@@ -141,6 +150,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/redux"
+                    title="Redux"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Redux
@@ -149,6 +159,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/axios"
+                    title="Axios"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Axios
@@ -157,6 +168,7 @@ const Header = () => {
                 <li>
                   <Link
                     to="/fetch"
+                    title="Fetch"
                     className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                   >
                     Fetch
@@ -167,6 +179,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/acceso/protegido"
+                        title="Acceso Protegido"
                         className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                       >
                         Protegido
@@ -175,6 +188,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/acceso/protegido2"
+                        title="Protegido 2"
                         className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                       >
                         Protegido2
@@ -196,6 +210,7 @@ const Header = () => {
                     <li>
                       <Link
                         to="/acceso/login"
+                        title="Login"
                         className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                       >
                         Login
@@ -204,9 +219,19 @@ const Header = () => {
                     <li>
                       <Link
                         to="/acceso/registro"
+                        title="Registro"
                         className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
                       >
                         Registro
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/pasarelas"
+                        title="Pasarelas"
+                        className="block py-2 pl-3 pr-4 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                      >
+                        Pasarelas
                       </Link>
                     </li>
                   </>

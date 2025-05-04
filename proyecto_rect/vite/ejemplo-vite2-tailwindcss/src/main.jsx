@@ -76,6 +76,9 @@ import AccesoRegistro, {action as registroAction} from './paginas/AccesoRegistro
 import AccesoLogin from './paginas/AccesoLogin'
 import AccesoProtegido from './paginas/AccesoProtegido'
 import AccesoProtegido2 from './paginas/AccesoProtegido2'
+import Pasarelas from './paginas/Pasarelas'
+import PasarelasWebpay, {loader as WebpayLoader} from './paginas/PasarelasWebpay'
+import PasarelasWebpayRespuesta, {loader as WebpayRespuestaLoader} from './paginas/PasarelasWebpayRespuesta'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -378,6 +381,23 @@ const router = createBrowserRouter([
       {
         path: "/acceso/protegido2",
         element: <AccesoProtegido2/>,
+
+      },
+      {
+        path: "/pasarelas",
+        element: <Pasarelas/>,
+
+      },
+      {
+        path: "/pasarelas/webpay",
+        element: <PasarelasWebpay/>,
+        loader: WebpayLoader,
+
+      },
+      {
+        path: "/pasarelas/webpay/respuesta",
+        element: <PasarelasWebpayRespuesta/>,
+        loader: WebpayRespuestaLoader
 
       },
       {

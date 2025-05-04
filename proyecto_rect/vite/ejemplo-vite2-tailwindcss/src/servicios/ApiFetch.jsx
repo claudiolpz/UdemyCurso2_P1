@@ -8,7 +8,7 @@ let cabeceros_updload = {
 };
 
 export async function getCategorias() {
-  let respuesta = await fetch(`${import.meta.env.VITE_API_URL}categorias`, {
+  let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}categorias`, {
     headers: cabeceros,
   });
   const resultado = await respuesta.json();
@@ -16,7 +16,7 @@ export async function getCategorias() {
 }
 
 export async function addCategorias(datos) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}categorias`, {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}categorias`, {
         method: "POST",
         body: JSON.stringify(datos),
         headers: cabeceros
@@ -24,7 +24,7 @@ export async function addCategorias(datos) {
     return await respuesta.json();
   }
   export async function editCategorias(datos, id) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}categorias/${id}`,
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}categorias/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(datos),
@@ -33,7 +33,7 @@ export async function addCategorias(datos) {
       await respuesta.json()
   }
   export async function deleteCategorias(datos, id) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}categorias/${id}`,
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}categorias/${id}`,
       {
         method: "DELETE",
         body: JSON.stringify(datos),
@@ -42,14 +42,14 @@ export async function addCategorias(datos) {
       await respuesta.json()
   }
   export async function getProductos(page) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos?page=${page}`, {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}productos?page=${page}`, {
       headers: cabeceros,
     });
     const resultado = await respuesta.json();
     return resultado;
   }
   export async function addProductos(datos) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos`, {
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}productos`, {
         method: "POST",
         body: JSON.stringify(datos),
         headers: cabeceros
@@ -57,7 +57,7 @@ export async function addCategorias(datos) {
      await respuesta.json();
   }
   export async function editProductos(datos, id) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos/${id}`,
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}productos/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(datos),
@@ -66,7 +66,7 @@ export async function addCategorias(datos) {
       await respuesta.json()
   }
   export async function deleteProductos(id) {
-    let respuesta = await fetch(`${import.meta.env.VITE_API_URL}productos/${id}`,
+    let respuesta = await fetch(`${import.meta.env.VITE_API_URL_LOCAL}productos/${id}`,
       {
         method: "DELETE",
         body: JSON.stringify(),
