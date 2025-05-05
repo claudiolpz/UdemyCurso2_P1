@@ -8,7 +8,6 @@ export async function loader({ request }) {
     if (!token) {
       throw new Response("Token no encontrado", { status: 400 });
     }
-    console.log(token);
     const datos = await webpayRespuesta({ token_ws: token });
     return datos;
   }

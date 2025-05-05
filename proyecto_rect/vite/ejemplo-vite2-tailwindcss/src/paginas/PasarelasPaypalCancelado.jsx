@@ -1,13 +1,17 @@
-import { Link, useLoaderData } from "react-router";
-import { paypalCrearOrden } from "../servicios/ApiPaypal";
+import { Link, useLoaderData } from "react-router"
+import { paypalCancelado } from "../servicios/ApiPaypal"
 
-export async function loader() {
-  let datos = paypalCrearOrden({ amount: 10 });
-  return datos;
+export async function loader({ request }) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token");
+  if (!token) {
+    throw new Response("Token no encontrado", { status: 400 });
+  }
+  const datos = await paypalCancelado({ id: token });
+  return [datos, token];
 }
-const PasarelasPaypal = () => {
-  const datos = useLoaderData();
-  console.log(datos);
+const PasarelasPaypalCancelado = () => {
+    const [datos, token] = useLoaderData();
   return (
     <div>
       <nav className="flex" aria-label="Breadcrumb">
@@ -72,44 +76,24 @@ const PasarelasPaypal = () => {
                 />
               </svg>
               <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                Paypal
+                Paypal Cancelado
               </span>
             </div>
           </li>
         </ol>
       </nav>
-      <h1 className="mt-3">Paypal</h1>
+      <h1 className="mt-3 mb-3">Paypal Cancelado</h1>
       <hr />
       <div>
-        <ul className="pl-5 ml-7 mt-3 list-disc">
-          <li>
-            <strong>Producto</strong>:Mesa de Computador
-          </li>
-          <li>
-            <strong>Precio</strong>: USD$ 10
-          </li>
-          <li>
-            <strong>cantidad</strong>: 1
-          </li>
-          <li>
-            <strong>orden de compra</strong>: 34324
-          </li>
-          <li>
-            <strong>Token</strong>: {datos.orden}
-          </li>
-          <li>
-            <strong>url</strong>: {datos.url}
-          </li>
-        </ul>
-      </div>
-      <Link
-        to={datos.url}
-        className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg focus:ring-4 focus:ring-blue-300"
-      >
-        <i className="fab fa-paypal mr-2"></i> Pagar con PayPal
-      </Link>
+    <div
+      className="p-4 mb-4 text-sm text-red-900 rounded-lg bg-red-100 border border-red-300"
+      role="alert"
+    >
+      <span className="font-medium">¡Error!</span> La orden <strong>{token}</strong> está cancelada.
     </div>
-  );
-};
+  </div>
+    </div>
+  )
+}
 
-export default PasarelasPaypal;
+export default PasarelasPaypalCancelado
