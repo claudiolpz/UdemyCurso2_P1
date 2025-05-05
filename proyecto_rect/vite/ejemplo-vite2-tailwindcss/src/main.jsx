@@ -76,6 +76,12 @@ import AccesoRegistro, {action as registroAction} from './paginas/AccesoRegistro
 import AccesoLogin from './paginas/AccesoLogin'
 import AccesoProtegido from './paginas/AccesoProtegido'
 import AccesoProtegido2 from './paginas/AccesoProtegido2'
+import Pasarelas from './paginas/Pasarelas'
+import PasarelasWebpay, {loader as WebpayLoader} from './paginas/PasarelasWebpay'
+import PasarelasWebpayRespuesta, {loader as WebpayRespuestaLoader} from './paginas/PasarelasWebpayRespuesta'
+import PasarelasPaypal, {loader as PaypalLoader} from './paginas/PasarelasPaypal'
+import PasarelasPaypalRespuesta, {loader as PaypalRespuestaLoader} from './paginas/PasarelasPaypalRespuesta'
+import PasarelasPaypalCancelado, {loader as PaypalCanceladoLoader} from './paginas/PasarelasPaypalCancelado'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -380,6 +386,37 @@ const router = createBrowserRouter([
         element: <AccesoProtegido2/>,
 
       },
+      {
+        path: "/pasarelas",
+        element: <Pasarelas/>,
+
+      },
+      {
+        path: "/pasarelas/webpay",
+        element: <PasarelasWebpay/>,
+        loader: WebpayLoader,
+      },
+      {
+        path: "/pasarelas/webpay/respuesta",
+        element: <PasarelasWebpayRespuesta/>,
+        loader: WebpayRespuestaLoader
+      },
+      {
+        path: "/pasarelas/paypal",
+        element: <PasarelasPaypal/>,
+        loader: PaypalLoader
+      },
+      {
+        path: "/pasarelas/paypal/respuesta",
+        element: <PasarelasPaypalRespuesta/>,
+        loader: PaypalRespuestaLoader
+      },
+      {
+        path: "/pasarelas/paypal/cancelado",
+        element: <PasarelasPaypalCancelado/>,
+        loader: PaypalCanceladoLoader
+      },
+
       {
         path: "*",
         element: <Error404 />,
