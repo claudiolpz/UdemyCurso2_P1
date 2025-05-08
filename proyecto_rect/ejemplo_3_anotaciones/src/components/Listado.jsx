@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-const Listado = ({ datos }) => {
+const Listado = ({ datos, handleEliminar }) => {
   return (
     <div>
       <div className="list list-row-block">
@@ -8,9 +8,11 @@ const Listado = ({ datos }) => {
           <Fragment key={dato.id}>
             <div className="list-item" data-id="19">
               <div>
+                <a onClick={()=>{handleEliminar(dato.id)}}>
                 <span data-abc="true">
                   <span className="w-48 avatar gd-warning">S</span>
                 </span>
+                </a>
               </div>
               <div className="flex">
                 <span className="item-author text-color" data-abc="true">
