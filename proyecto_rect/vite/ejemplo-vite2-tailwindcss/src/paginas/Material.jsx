@@ -1,0 +1,52 @@
+import { Link } from "react-router"
+
+const Material = () => {
+  return (
+    <div>
+         <h1>
+            Material
+        </h1>
+        <hr />
+      <div title="Material-div" className="pl-5 ml-7 mt-3">
+                <ul className="list-disc">
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/botones">Botones </Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/list">List </Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/drawer">Drawer </Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/table">Table o Data Grid </Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/acordion">Acordeon</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/stepper">Stepper</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/tabs">Tabs</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/dialog">Dialog</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/card">Card</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/autocomplete">Autocomplete</Link>
+                    </li>
+                    <li >
+                        <Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline mt-2" to="/material/datepicker">Date Picker</Link>
+                    </li>
+                    
+                </ul>
+            </div>
+    </div>
+  )
+}
+
+export default Material

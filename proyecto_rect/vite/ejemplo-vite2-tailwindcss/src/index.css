@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+.clase_roja {
+    background-color: #ff0000;
+    color: #fff;
+  }
+  .clase_azul {
+    background-color: #0000ff;
+    color: #fff;
+  }
+  
