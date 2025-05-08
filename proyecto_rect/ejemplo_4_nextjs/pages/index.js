@@ -1,22 +1,13 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Frontend from "@/components/Frontend";
+import styled from './../styles/ejemplo.module.css'
 
 export default function Home() {
   return (
     <>
-          <h1>Hola mundo desde NextJs</h1>    
+      <Frontend title={'Inicio'}>
+      <h1 className={styled.ejemplo_module}>Hola mundo desde NextJs</h1>    
+      </Frontend>
     </>
+
   );
 }
