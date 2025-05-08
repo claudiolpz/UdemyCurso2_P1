@@ -35,3 +35,24 @@ export async function getAnotaciones(){
     })
     return datos;
 }
+export async function deleteAnotacion(id){
+    let datos = axios.delete(`${import.meta.env.VITE_API_URL_LOCAL}anotaciones/${id}`, {
+        headers: cabeceros
+    }).then((response) => {
+        return response.status;
+    }).catch((error) => {
+        console.log(error);
+    })
+    return datos;
+}
+export async function addAnotaciones(request){
+    let datos = axios.post(`${import.meta.env.VITE_API_URL_LOCAL}anotaciones`, request, {
+        headers: cabeceros
+    }).then((response) => {
+        console.log(response.data);
+        return response.data;
+    }).catch((error) => {
+        console.log(error);
+    })
+    return datos;
+}

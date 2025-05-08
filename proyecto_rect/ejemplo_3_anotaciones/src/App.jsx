@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router";
 import Listado from "./components/Listado";
+import Formulario from "./components/Formulario";
 import { getAnotaciones } from "./service/ApiRest";
 
 export const loader = async () => {
@@ -20,6 +21,7 @@ function App() {
             </h3>
           </div>
           <div className="card-body">
+            <Formulario />
             <Listado datos={datos} />
           </div>
         </div>
