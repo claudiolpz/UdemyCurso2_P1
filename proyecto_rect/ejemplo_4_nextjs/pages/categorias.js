@@ -2,15 +2,34 @@ import Frontend from "@/components/Frontend"
 import Link from "next/link"
 import SlideBar from "@/components/SlideBar"
 import Aviso from "@/components/Aviso"
+import { getCategorias, getAvisos } from "@/services/ApiRest"
 
-const Categorias = () => {
+const Categorias = ({categorias, avisos, page}) => {
+  let siguiente;
+  let anterior;
+  let pageMenos1 = parseInt(page) - 1;
+  let pageMas1 = parseInt(page) + 1;
+  if(parseInt(pageMenos1) <= 1){
+    anterior = 1;
+  }else{
+    anterior = pageMenos1;
+  }
+  if(parseInt(pageMas1) >=avisos.links){
+    siguiente = avisos.links;
+  }else{
+    siguiente = pageMas1;
+  }
+  let paginas = []
+  for (let i = 1; i<= avisos.links; i++){
+    paginas[i]=i;
+  }
   return (
     <div>
       <Frontend title={'Categorías'}>
      <section className="py-5">
       <div className="container py-5">
         <div className="row gy-5">
-            <SlideBar/>
+            <SlideBar categorias={categorias}/>
           <div className="col-lg-9 order-1 order-lg-2">
          <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">
@@ -24,7 +43,10 @@ const Categorias = () => {
                 </nav>
              
             <div className="row mb-4 gy-4">
-             <Aviso/>
+              {avisos.datos.map((aviso)=>(
+                <Aviso key={aviso.id} aviso={aviso}/>
+              ))}
+             
             </div> 
             <nav aria-label="Page navigation example">
               <ul className="pagination justify-content-end mb-0">
@@ -41,7 +63,7 @@ const Categorias = () => {
                 <li className="page-item mx-1">
                       <Link
                         className="page-link rounded shadow-sm px-3"
-                        href="#"
+                        href={`/categorias?page=${anterior}`}
                         aria-label="Anterior"
                         title="Anterior"
                       >
@@ -49,11 +71,23 @@ const Categorias = () => {
                       </Link>
                     </li>
                     {/*paginación numérica */}
+                    {[...paginas].map((x,i)=>(
+                      <li className="page-item mx-l" key={i}>
+                        {i >= 1 && (
+                          <Link className="page-link rounded shadow-sm px-3" href={`/categorias?page=${i}`}>
+                          {i}
+                          </Link>
+                        )
+
+                        }
+
+                      </li>
+                    ))}
                     {/*//paginación numérica */}
                 <li className="page-item mx-1">
                       <Link
                         className="page-link rounded shadow-sm px-3"
-                        href="#"
+                        href={`/categorias?page=${siguiente}`}
                         aria-label="Siguiente"
                         title="Siguiente"
                       >
@@ -63,7 +97,7 @@ const Categorias = () => {
                     <li className="page-item mx-1">
                       <Link
                         className="page-link rounded shadow-sm px-3"
-                        href="#"
+                        href={`/categorias?page=${avisos.links}`}
                         aria-label="Última"
                         title="Última"
                       >
@@ -82,3 +116,14 @@ const Categorias = () => {
 }
 
 export default Categorias
+//getStaticProps
+export async function getServerSideProps(context){
+  let page = context.query.page;
+  let avisos = await getAvisos(page);
+  let categorias = await getCategorias();
+  return {
+    props:{
+      categorias, avisos, page
+    }
+  }
+}

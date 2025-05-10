@@ -1,15 +1,18 @@
 import Link from 'next/link'
-const Aviso = () => {
+import Image from 'next/image'
+import { acortarTexto } from '@/helpers/helpers'
+
+const Aviso = ({aviso}) => {
   return (
-    <>
+    <div>
       <div className="col-lg-6">
         <div className="card shadow-sm border-0 hover-transition">
-          {/* <Link
+          <Link
             className="d-block dark-overlay card-img-top overflow-hidden tool-trending"
-            // href={`/detalle/${aviso.id}/${aviso.slug}`}
-          > */}
+            href={`/detalle/${aviso.id}/${aviso.slug}`}
+          >
             <div className="overlay-content">
-              {/* <Image
+              <Image
                 className="img-fluid"
                 loader={()=>`${process.env.NEXT_PUBLIC_BASE_URL_LOCAL}uploads/avisos/${aviso.foto}`}
                 src={`${process.env.NEXT_PUBLIC_BASE_URL_LOCAL}uploads/avisos/${aviso.foto}`}
@@ -18,23 +21,23 @@ const Aviso = () => {
                 alt="Clasificados Nextjs" 
                 unoptimized={true} priority
                 
-              /> */}
+              />
             </div>
-          {/* </Link> */}
+          </Link>
           <div className="card-body p-4">
             <h3 className="h5">
-              {/* {" "}
+              {" "}
               <Link className="stretched-link reset-anchor" href={`/detalle/${aviso.id}/${aviso.slug}`} title={aviso.nombre}>
                 {aviso.nombre}
-              </Link> */}
+              </Link>
             </h3>
             <p className="text-muted text-sm mb-0">
-              {/* {acortarTexto(aviso.descripcion, 0, 100)}.... */}
+            {acortarTexto(aviso.descripcion, 0, 100)}....
             </p>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
