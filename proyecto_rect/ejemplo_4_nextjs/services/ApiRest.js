@@ -33,3 +33,15 @@ export async function getAvisos(page) {
     })
     return datos
 }
+export async function getAvisosPorId(id) {
+
+    let datos = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos/${id}`, {headers:cabeceros
+
+    }).then((response)=>{
+        return response.data
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}
