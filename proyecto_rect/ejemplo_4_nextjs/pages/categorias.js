@@ -29,7 +29,7 @@ const Categorias = ({categorias, avisos, page}) => {
      <section className="py-5">
       <div className="container py-5">
         <div className="row gy-5">
-            <SlideBar categorias={categorias}/>
+            <SlideBar valor = {``} categorias={categorias}/>
           <div className="col-lg-9 order-1 order-lg-2">
          <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">

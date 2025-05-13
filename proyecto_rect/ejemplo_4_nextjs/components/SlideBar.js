@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const SlideBar = ({categorias}) => {
+const SlideBar = ({categorias, valor}) => {
   return (
     <>
     <div></div>
@@ -13,7 +13,7 @@ const SlideBar = ({categorias}) => {
                   {categorias.map((categoria)=>(
                     <ul key={categoria.id}>
                       <li>
-                        <Link className={`text text-secondary`} href={`/categoria/${categoria.slug}`} title={categoria.nombre}>
+                        <Link className={`text text-${(valor==categoria.id)? 'danger' : 'secondary'}`} href={`/categoria/${categoria.slug}?page=1`} title={categoria.nombre}>
                         {categoria.nombre}
                         </Link>
                       </li>

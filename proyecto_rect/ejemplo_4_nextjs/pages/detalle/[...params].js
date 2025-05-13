@@ -17,7 +17,7 @@ const Detalle = ({ datos, categorias }) => {
                   <Link href="/">Home</Link>
                 </li>
                 <li className="breadcrumb-item">
-                  <Link href={`/categorias`}>Categorias</Link>
+                  <Link href={`/categorias?page=1`}>Categorias</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
                   {datos.nombre}
@@ -40,7 +40,7 @@ const Detalle = ({ datos, categorias }) => {
                       />
                     </p>
                     <h2 className="h1 mb-4">{datos.nombre}</h2>
-                    <h2 className="h4 mb-4">Categoría <Link href={`/categoria/${datos.clasificados_categoria_slug}`} title={datos.clasificados_categoria_nombre}>{datos.clasificados_categoria_nombre}</Link></h2>
+                    <h2 className="h4 mb-4">Categoría <Link href={`/categoria/${datos.clasificados_categoria_slug}?page=1`} title={datos.clasificados_categoria_nombre}>{datos.clasificados_categoria_nombre}</Link></h2>
                     <p>{datos.descripcion}</p>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const Detalle = ({ datos, categorias }) => {
                                 ? "outline-danger"
                                 : "light"
                             }`}
-                            href={`/categoria/${categoria.slug}`}
+                            href={`/categoria/${categoria.slug}?page=1`}
                             title={categoria.nombre}
                           >
                             {categoria.nombre}
