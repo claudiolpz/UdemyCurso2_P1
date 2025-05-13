@@ -137,7 +137,6 @@ export default AvisosPorCategoria
 
 export async function getServerSideProps({query, params}){
   let page = query.page;
-  console.log(query)
   if(params)
   {
     let categorias = await getCategorias();

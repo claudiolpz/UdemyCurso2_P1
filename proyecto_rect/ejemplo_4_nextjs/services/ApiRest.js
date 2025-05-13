@@ -70,3 +70,15 @@ export async function getCategoriasPorSlug(slug) {
     })
     return datos
 }
+export async function getAvisosComentariosPorId(id) {
+
+    let datos = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos-comentarios/${id}`, {headers:cabeceros
+
+    }).then((response)=>{
+        return response.data
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}

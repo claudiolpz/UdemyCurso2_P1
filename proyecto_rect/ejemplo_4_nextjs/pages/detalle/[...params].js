@@ -2,8 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import Frontend from "@/components/Frontend";
 import { useRouter } from "next/router";
-import { getAvisosPorId, getCategorias } from "@/services/ApiRest";
-const Detalle = ({ datos, categorias }) => {
+import { formatearFecha } from "@/helpers/helpers";
+import { getAvisosPorId, getCategorias, getAvisosComentariosPorId } from "@/services/ApiRest";
+const Detalle = ({ datos, categorias, comentarios }) => {
   let router = useRouter();
 
   return (
@@ -42,6 +43,45 @@ const Detalle = ({ datos, categorias }) => {
                     <h2 className="h1 mb-4">{datos.nombre}</h2>
                     <h2 className="h4 mb-4">Categoría <Link href={`/categoria/${datos.clasificados_categoria_slug}?page=1`} title={datos.clasificados_categoria_nombre}>{datos.clasificados_categoria_nombre}</Link></h2>
                     <p>{datos.descripcion}</p>
+                  </div>
+                </div>
+                <div className="card border-0 shadow-sm p-2 p-lg-0">
+                  <div className="card-body p-lg-5">
+                    <h2 className="h3 mb-4">Hay {comentarios.length} Comentarios</h2>
+                     {comentarios.map((comentario)=>(
+                    <div key={comentario.id} className="mb-4">
+                      <div className="row mb-3">
+                        <div className="col-lg-8">
+                          <div className="d-flex align-items-center">
+                            <Image 
+                            className="rounded-circle"
+                              src="/img/usuario.png"
+                              alt=""
+                              height={40}
+                              width="40"
+                            />
+                             
+                              
+                             
+                            <div className="ms-2">
+                              <h6 className="mb-0">{comentario.nombre}</h6>
+                              <p className="small text-muted mb-0 fw-bold">
+                                {formatearFecha(comentario.fecha)}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div className="row ps-5">
+                        <div className="col-12">
+                          <p className="text-sm">
+                            {comentario.mensaje}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                   ))}
                   </div>
                 </div>
               </div>
@@ -115,10 +155,12 @@ export async function getServerSideProps({ params }) {
   let categorias = await getCategorias();
   if (params) {
     let datos = await getAvisosPorId(params.params[0]);
+    let comentarios = await getAvisosComentariosPorId(params.params[0])
     return {
       props: {
         datos,
         categorias,
+        comentarios
       },
     };
   }
