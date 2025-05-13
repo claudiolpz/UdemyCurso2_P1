@@ -1,12 +1,73 @@
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Frontend from "@/components/Frontend";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 import { formatearFecha } from "@/helpers/helpers";
-import { getAvisosPorId, getCategorias, getAvisosComentariosPorId } from "@/services/ApiRest";
+import { getAvisosPorId, getCategorias, getAvisosComentariosPorId, addAvisosComentariosPorId } from "@/services/ApiRest";
+
 const Detalle = ({ datos, categorias, comentarios }) => {
   let router = useRouter();
-
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    if(nombre == 0 || nombre ==""){
+      Swal.fire({
+        icon:"error",
+        title:"Ups",
+        text:"El campo esta vacio"
+      });
+      setNombre("");
+      return;
+    }
+    if(correo == 0 || correo ==""){
+      Swal.fire({
+        icon:"error",
+        title:"Ups",
+        text:"El campo esta vacio"
+      });
+      setNombre("");
+      return;
+    }
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(correo)) {
+      Swal.fire({
+        icon: "error",
+        title: "Ups",
+        text: "El E-Mail ingresado no es válido",
+      });
+      setCorreo("");
+      return;
+    }
+    if (mensaje == 0 || mensaje == "") {
+      Swal.fire({
+        icon: "error",
+        title: "Ups",
+        text: "El campo mensaje está vacío",
+      });
+      setMensaje("");
+      return;
+    }
+    if(await addAvisosComentariosPorId({nombre: nombre, correo:correo, clasificados_avisos_id: datos.id, mensaje:mensaje})){
+       Swal.fire({
+          icon: "success",
+          title: "Ok",
+          text: "Se creó el registro exitosamente",
+        });
+        setNombre("");
+        setCorreo("");
+        setMensaje("");
+        return router.replace(router.asPath);
+    }else{
+      return Swal.fire({
+        icon: "error",
+        title: "Ups",
+        text: "Ha ocurrido un error inesperado",
+      });
+    }
+  }
   return (
     <div>
       <Frontend title={`${datos.nombre}`}>
@@ -82,6 +143,58 @@ const Detalle = ({ datos, categorias, comentarios }) => {
                       </div>
                     </div>
                    ))}
+                   <a
+                      className="btn btn-secondary"
+                      href="#reviewPanel"
+                      role="button"
+                      data-bs-toggle="collapse"
+                      title="Agregar comentario"
+                    >
+                      <i className="fas fa-plus"></i> Agregar comentario
+                    </a>
+                    <div className="collapse" id="reviewPanel">
+                      <div className="pt-4">
+                        <form onSubmit={handleSubmit}>
+                          <div className="row gy-3">
+                            <div className="col-lg-6">
+                              <label className="form-label" htmlFor="nombre">
+                                Nombre
+                              </label>
+                              <input
+                                className="form-control form-control-lg"
+                                id="nombre"
+                                type="text"
+                                value={nombre} 
+                                onChange={(e) => setNombre(e.target.value)}
+                                placeholder="Tu nombre:"
+                              />
+                            </div>
+                            <div className="col-lg-6">
+                              <label className="form-label" htmlFor="correo">
+                                E-Mail
+                              </label>
+                              <input
+                                className="form-control form-control-lg"
+                                id="correo"
+                                type="text"
+                                value={correo} 
+                                onChange={(e) => setCorreo(e.target.value)}
+                                placeholder="Tu E-Mail"
+                              />
+                            </div>
+                            <div className="col-12">
+                          <label className="form-label" htmlFor="mensaje">Tu mensaje</label>
+                          <textarea className="form-control form-control-lg" id="mensaje" value={mensaje} 
+                                onChange={(e) => setMensaje(e.target.value)} rows="5" placeholder="Deja tu mensaje aquí."></textarea>
+                        </div>
+                        <div className="col-12">
+                          <button className="btn btn-primary" title="Enviar"><i className="fas fa-comment"></i> Enviar</button>
+                        </div>
+                            <div className="col-12 d-flex justify-content-start"></div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

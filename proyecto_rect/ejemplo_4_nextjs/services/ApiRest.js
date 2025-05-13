@@ -82,3 +82,16 @@ export async function getAvisosComentariosPorId(id) {
     })
     return datos
 }
+
+export async function addAvisosComentariosPorId(request) {
+
+    let datos = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos-comentarios`, request, {headers:cabeceros
+
+    }).then((response)=>{
+        return response.status
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}
