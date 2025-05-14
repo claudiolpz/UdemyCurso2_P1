@@ -29,7 +29,7 @@ const Detalle = ({ datos, categorias, comentarios }) => {
         title:"Ups",
         text:"El campo esta vacio"
       });
-      setNombre("");
+      setCorreo("");
       return;
     }
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(correo)) {

@@ -95,3 +95,15 @@ export async function addAvisosComentariosPorId(request) {
     })
     return datos
 }
+export async function formularioContacto(request) {
+
+    let datos = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-contacto`, request, {headers:cabeceros
+
+    }).then((response)=>{
+        return response.status
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}
