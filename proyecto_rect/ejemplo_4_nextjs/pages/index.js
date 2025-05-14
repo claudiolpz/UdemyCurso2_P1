@@ -1,7 +1,20 @@
 import Frontend from "@/components/Frontend";
-import { getCategorias } from "@/services/ApiRest";
+import { getCategorias, getAvisosSearch } from "@/services/ApiRest";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 function Home({categorias}) {
+  let router = useRouter()
+  const [search, setSearch] = useState('')
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    if(search == 0 || search ==""){
+      setSearch("")
+      return
+    }
+    return router.push(`/categorias-search?search=${search}`)
+  }
   return (
     <>
       <div></div>
@@ -15,9 +28,9 @@ function Home({categorias}) {
                   Clasificados Next
                 </p>
                 <h1 className="mb-5">Busca lo que necesitas aquí.</h1>
-                 <form className="p-2 rounded shadow-sm bg-white">
+                 <form className="p-2 rounded shadow-sm bg-white" onSubmit={handleSubmit}>
                   <div className="input-group">
-                    <input className="form-control border-0 me-2 shadow-0" type="search" placeholder="Busca aquí lo que necesites"/>
+                    <input className="form-control border-0 me-2 shadow-0" type="search" values={search} onChange={(e)=>setSearch(e.target.value)} placeholder="Busca aquí lo que necesites"/>
                     <button className="btn btn-primary rounded" type="submit"><i className="fas fa-search"></i></button>
                   </div>
                  </form>

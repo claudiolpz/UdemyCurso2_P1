@@ -107,3 +107,16 @@ export async function formularioContacto(request) {
     })
     return datos
 }
+
+export async function getAvisosSearch(search) {
+
+    let datos = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos-search?search=${search}`, {headers:cabeceros
+
+    }).then((response)=>{
+        return response.data
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}
