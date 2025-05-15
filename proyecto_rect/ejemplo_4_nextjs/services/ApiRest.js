@@ -120,3 +120,15 @@ export async function getAvisosSearch(search) {
     })
     return datos
 }
+export async function authLogin(request) {
+
+    let datos = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}login`, request,{
+        headers:cabeceros
+    }).then((response)=>{
+        return response.data
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}
