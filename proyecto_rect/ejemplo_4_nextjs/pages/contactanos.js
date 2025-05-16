@@ -1,10 +1,12 @@
 import Frontend from "@/components/Frontend"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { formularioContacto } from "@/services/ApiRest"
 import Swal from "sweetalert2";
-
-const Contactanos = () => {
+const Contactanos = ({authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
     let router = useRouter();
     const [nombre, setNombre] = useState('');
     const [correo, setCorreo] = useState('');
@@ -86,7 +88,7 @@ const Contactanos = () => {
         }
     }
   return (
-    <Frontend title={'Contactanos'}>
+    <Frontend title={'Contactanos'} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
         <div className="container py-5">
             <h1>Contactanos</h1>
             <div className="card mb-4" id="forms">

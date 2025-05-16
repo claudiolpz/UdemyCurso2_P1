@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Frontend from "@/components/Frontend";
@@ -7,7 +7,10 @@ import Swal from "sweetalert2";
 import { formatearFecha } from "@/helpers/helpers";
 import { getAvisosPorId, getCategorias, getAvisosComentariosPorId, addAvisosComentariosPorId } from "@/services/ApiRest";
 
-const Detalle = ({ datos, categorias, comentarios }) => {
+const Detalle = ({ datos, categorias, comentarios, authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
   let router = useRouter();
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
@@ -70,7 +73,7 @@ const Detalle = ({ datos, categorias, comentarios }) => {
   }
   return (
     <div>
-      <Frontend title={`${datos.nombre}`}>
+      <Frontend title={`${datos.nombre}`} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
         <section className="py-5">
           <div className="container py-5">
             <nav aria-label="breadcrmub">

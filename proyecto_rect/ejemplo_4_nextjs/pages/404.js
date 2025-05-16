@@ -1,11 +1,14 @@
 import Frontend from "@/components/Frontend"
 import Link from "next/link"
 import Image from "next/image"
-
-const Pagina404 = () => {
+import { useEffect } from "react"
+const Pagina404 = ({authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
   return (
     <>
-    <Frontend title={"Pagina no encontrada"}>
+    <Frontend title={"Pagina no encontrada"} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
         <h1>Pagina no encontrada</h1>
         <hr />
         <center>

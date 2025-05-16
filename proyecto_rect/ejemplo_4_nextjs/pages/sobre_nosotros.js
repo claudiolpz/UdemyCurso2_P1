@@ -1,8 +1,13 @@
 import Frontend from "@/components/Frontend"
 import Image from "next/image"
-const SobreNosostros = () => {
+import { useEffect } from "react";
+
+const SobreNosostros = ({authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
   return (
-    <Frontend title={'Sobre Nosotros'}>
+    <Frontend title={'Sobre Nosotros'} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
     <div className="container py-5">
       <h1>Clasificados NextJs</h1>
       <p>

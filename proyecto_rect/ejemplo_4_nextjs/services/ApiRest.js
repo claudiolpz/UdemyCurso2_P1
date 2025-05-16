@@ -1,12 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-let cabeceros = {
-  "content-type": "application/json",
-};
-
-let cabeceros_upload = {
-  "content-type": "multipart/form-data",
-};
+let cabeceros =
+{
+    'content-type': 'application/json' 
+}
+ let cabeceros_upload =
+{
+    'content-type': 'multipart/form-data' 
+}
 
 export async function getCategorias() {
   let datos = await axios
@@ -227,4 +228,65 @@ export async function deleteCategorias(id) {
       console.log("error: " + err);
     });
   return datos;
+}
+
+export async function deleteAvisos(id) {
+    console.log("gola")
+    let datos = axios
+        .delete(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos/${id}`, {
+            headers: cabeceros
+        })
+        .then((response) => {
+            return response.status;
+        }).catch((error) => {
+            console.log(error);
+        });
+    return datos;
+}
+export async function editarAvisos(request, accionesId) {
+    let formData = new FormData(); 
+    formData.append('clasificados_categoria_id', request.clasificados_categoria_id);
+    formData.append('nombre', request.nombre);
+    formData.append('descripcion', request.descripcion);
+    formData.append('imagen', request.foto); 
+    formData.append('id', accionesId);
+    let datos = axios
+        .post(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos-update`, formData, {
+            headers: cabeceros_upload
+        })
+        .then((response) => {  
+            return response.status;
+        }).catch((error) => {
+            console.log(error);
+        });
+    return datos;
+}
+export async function addAvisos(request) {
+    try {
+        const formData = new FormData(); 
+        formData.append('clasificados_categoria_id', request.clasificados_categoria_id);
+        formData.append('nombre', request.nombre);
+        formData.append('descripcion', request.descripcion);
+        
+        // Validate file before append
+        if (request.foto instanceof File) {
+            formData.append('imagen', request.foto);
+        } else {
+            throw new Error('Invalid file format');
+        }
+
+        const response = await axios.post(
+            `${process.env.NEXT_PUBLIC_API_URL_LOCAL}clasificados-avisos`, 
+            formData,
+            {
+                headers: cabeceros_upload
+            }
+        );
+
+        return response.status;
+    } catch (error) {
+        // Log detailed error
+        console.error('Upload error:', error.response?.data || error.message);
+        throw error; // Re-throw to handle in component
+    }
 }

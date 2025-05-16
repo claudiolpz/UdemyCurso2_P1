@@ -3,8 +3,11 @@ import Link from "next/link"
 import SlideBar from "@/components/SlideBar"
 import Aviso from "@/components/Aviso"
 import { getCategorias, getAvisos } from "@/services/ApiRest"
-
-const Categorias = ({categorias, avisos, page}) => {
+import { useEffect } from "react"
+const Categorias = ({categorias, avisos, page, authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
   let siguiente;
   let anterior;
   let pageMenos1 = parseInt(page) - 1;
@@ -25,7 +28,7 @@ const Categorias = ({categorias, avisos, page}) => {
   }
   return (
     <div>
-      <Frontend title={'Categorías'}>
+      <Frontend title={'Categorías'} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
      <section className="py-5">
       <div className="container py-5">
         <div className="row gy-5">

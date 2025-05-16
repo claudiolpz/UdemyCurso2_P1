@@ -1,11 +1,15 @@
 import { useRouter } from "next/router"
+import { useEffect } from "react"
 import Aviso from "@/components/Aviso"
 import Frontend from "@/components/Frontend"
 import SlideBar from "@/components/SlideBar"
 import Link from "next/link"
 import { getCategorias, getCategoriasPorSlug,getAvisosPorCategoria } from "@/services/ApiRest"
 
-const AvisosPorCategoria = ({categorias, avisos, cat, page}) => {
+const AvisosPorCategoria = ({categorias, avisos, cat, page, authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
   const router = useRouter();
   let siguiente;
   let anterior;
@@ -30,7 +34,7 @@ const AvisosPorCategoria = ({categorias, avisos, cat, page}) => {
   }
   return (
     <>
-    <Frontend title={'Categorías'}>
+    <Frontend title={'Categorías'} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
      <section className="py-5">
       <div className="container py-5">
         <div className="row gy-5">

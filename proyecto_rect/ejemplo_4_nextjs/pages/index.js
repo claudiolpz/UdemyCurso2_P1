@@ -2,9 +2,12 @@ import Frontend from "@/components/Frontend";
 import { getCategorias, getAvisosSearch } from "@/services/ApiRest";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Home({categorias}) {
+function Home({categorias, authNombre, handleEstaLogueado, handleCerrarSesion}) {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
   let router = useRouter()
   const [search, setSearch] = useState('')
   const handleSubmit = (e)=>{
@@ -15,10 +18,11 @@ function Home({categorias}) {
     }
     return router.push(`/categorias-search?search=${search}`)
   }
+  
   return (
     <>
       <div></div>
-      <Frontend title={"Inicio"}>
+      <Frontend title={"Inicio"} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
         <h1 /*className={styled.ejemplo_module}*/>Hola mundo desde NextJs</h1>
         <section className="hero-home py-5">
           <div className="container pt-5">

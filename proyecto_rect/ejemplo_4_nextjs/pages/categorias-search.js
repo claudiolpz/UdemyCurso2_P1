@@ -3,12 +3,16 @@ import Link from "next/link";
 import Frontend from "@/components/Frontend";
 import SlideBar from "@/components/SlideBar";
 import Aviso from "@/components/Aviso";
+import { useEffect } from "react";
 import { getCategorias, getAvisosSearch} from "@/services/ApiRest";
-const CategoriasSearch = ({ categorias, avisos, search}) => {
+const CategoriasSearch = ({ categorias, avisos, search, authNombre, handleEstaLogueado, handleCerrarSesion})=> {
+  useEffect(() => {
+    handleEstaLogueado();
+  }, []);
        
   return (
     <>
-      <Frontend title={"Categorías"}>
+      <Frontend title={"Categorías"} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
         <section className="py-5">
           
           <div className="container py-5">
