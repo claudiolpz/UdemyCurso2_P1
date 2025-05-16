@@ -132,3 +132,15 @@ export async function authLogin(request) {
     })
     return datos
 }
+export async function authRegistro(request) {
+
+    let datos = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_LOCAL}registro`, request,{
+        headers:cabeceros
+    }).then((response)=>{
+        return response.data
+    })
+    .catch((err)=>{
+        console.log("error: "+err)
+    })
+    return datos
+}
