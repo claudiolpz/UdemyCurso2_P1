@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { formularioContacto } from "@/services/ApiRest"
 import Swal from "sweetalert2";
 
-const contactanos = () => {
+const Contactanos = () => {
     let router = useRouter();
     const [nombre, setNombre] = useState('');
     const [correo, setCorreo] = useState('');
@@ -128,4 +128,4 @@ const contactanos = () => {
   )
 }
 
-export default contactanos
+export default Contactanos

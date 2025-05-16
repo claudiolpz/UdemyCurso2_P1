@@ -3,15 +3,15 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Frontend from "@/components/Frontend";
 
-const panel = ({handleEstaLogueado}) => {
+const Panel = ({handleEstaLogueado, authNombre, handleCerrarSesion}) => {
 
     useEffect(()=>{
         handleEstaLogueado()
     }, []);
-    
+
   return (
     <div>
-      <Frontend title={"Panel"}>
+      <Frontend title={"Panel"} authNombre={authNombre} handleCerrarSesion={handleCerrarSesion}>
         <section className="py-5">
           <div className="container py-5">
             <nav aria-label="breadcrumb">
@@ -83,4 +83,4 @@ const panel = ({handleEstaLogueado}) => {
   );
 };
 
-export default panel;
+export default Panel;

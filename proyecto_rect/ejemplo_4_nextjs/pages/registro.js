@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import Frontend from "@/components/Frontend";
 import { authRegistro } from "@/services/ApiRest";
 
-const registro = () => {
+const Registro = () => {
   let router = useRouter();
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
@@ -206,4 +206,4 @@ const registro = () => {
   );
 };
 
-export default registro;
+export default Registro;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({authNombre, handleCerrarSesion}) => {
   return (
     <>
     <header className="header">
@@ -71,6 +71,30 @@ const Header = () => {
                   Contáctanos
                 </Link>
               </li>
+              {authNombre && (
+                <>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/panel" title={`Hola ${authNombre}`}>
+                  {`Hola ${authNombre}`}
+                  </Link>
+                  </li>
+                  <li className="nav-item">
+                  <Link className="nav-link" href="#" title="Cerrar Sesión" onClick={handleCerrarSesion}>
+                    <i className="fas fa-sign-out-alt"></i>
+                  </Link>
+                </li>
+                </>
+              )}
+              {!authNombre && (
+                <>
+                <div></div>
+                <li className="nav-item ms-lg py-2 py-lg-0">
+                  <Link className="btn btn-warning" href="/login" title="Login/registro">
+                  <i className="fas fa-lock"></i> Login/Registro
+                  </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import Frontend from "@/components/Frontend";
 import {authLogin} from "@/services/ApiRest"
 
-const login = ({ handleIniciarSesion }) => {
+const Login = ({ handleIniciarSesion }) => {
   let router = useRouter();
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
@@ -123,4 +123,4 @@ const login = ({ handleIniciarSesion }) => {
   );
 };
 
-export default login;
+export default Login;

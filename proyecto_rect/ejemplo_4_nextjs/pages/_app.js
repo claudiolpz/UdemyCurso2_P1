@@ -36,6 +36,34 @@ export default function App({ Component, pageProps }) {
     setAuthCorreo(correo);
     setAuth(true);
   };
+
+  const handleCerrarSesion = () => {
+
+    Swal.fire({
+      title: '¿Realmente desea cerrar la sesión?',
+      text: "Podrás volver a loguearte cuando lo necesites!!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'NO',
+      confirmButtonText: 'SI'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        destroyCookie(null, 'tokenTamila', {});
+        destroyCookie(null, 'tokenTamilaNombre', {});
+        destroyCookie(null, 'tokenTamilaCorreo', {});
+       
+        setAuthNombre('');
+        setAuthCorreo('');
+        setAuth(false);
+        router.push("/login");
+      }
+    })
+
+  };
+
   return (
     <Component
       {...pageProps}
@@ -47,6 +75,7 @@ export default function App({ Component, pageProps }) {
       setAuthCorreo={setAuthCorreo}
       handleIniciarSesion={handleIniciarSesion}
       handleEstaLogueado={handleEstaLogueado}
+      handleCerrarSesion={handleCerrarSesion}
     />
   );
 }
