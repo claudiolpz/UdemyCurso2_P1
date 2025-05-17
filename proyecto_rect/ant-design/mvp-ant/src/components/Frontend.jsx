@@ -4,7 +4,12 @@ import { Layout, Menu } from "antd";
 
 const Frontend = () => {
   const { Header, Content, Footer } = Layout;
-  const items = [{ key: 1, label: <Link to="/">Home</Link> }];
+  const items = [
+    { key: 1, label: <Link to="/">Home</Link> },
+    { key: 2, label: <Link to="/icon">Icon</Link> },
+    { key: 3, label: <Link to="/button">Button</Link> },
+    { key: 4, label: <Link to="/typography">Typography</Link> }
+];
   return (
     <>
       <Layout>
@@ -22,7 +27,6 @@ const Frontend = () => {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={["2"]}
             style={{ flex: 1, minWidth: 0 }}
             items={items}
           ></Menu>

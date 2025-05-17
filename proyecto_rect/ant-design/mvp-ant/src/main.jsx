@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from 'react-router'
 import Frontend from './components/Frontend';
 import Home from './pages/Home';
+import IconPagina from './pages/IconPagina';
+import ButtonPagina from './pages/ButtonPagina';
+import TypographyPagina from './pages/TypographyPagina';
 const router = createBrowserRouter(
   [
     {
@@ -12,6 +15,18 @@ const router = createBrowserRouter(
         {
           index:true,
           element:<Home/>
+        },
+        {
+          path:"/icon",
+          element:<IconPagina/>
+        },
+        {
+          path:"/button",
+          element:<ButtonPagina/>
+        },
+        {
+          path:"/typography",
+          element:<TypographyPagina/>
         }
       ]
     }
