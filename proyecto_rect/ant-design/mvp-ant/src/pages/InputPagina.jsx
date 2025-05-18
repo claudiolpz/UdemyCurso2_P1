@@ -9,6 +9,9 @@ const InputPagina = () => {
             <Select.Option value='2'>https://</Select.Option>
         </Select>
     );
+    let eventoChange=(valor)=>{
+        console.log("dato = "+ valor)
+    }
   return (
     <>
     <Breadcrumb
@@ -61,6 +64,14 @@ const InputPagina = () => {
     <hr />
     {/* addonBefore */}
     <Input placeholder='Mi Sitio Web' addonBefore={selectInitio}/>
+    <hr />
+    <Select placeholder="con eventos" className='SelectAnt' onChange={eventoChange}>
+        <Select.Option value='0'>Seleccione ......</Select.Option>
+        <Select.Option value='1'>Chile</Select.Option>
+        <Select.Option value='2'>Argentina</Select.Option>
+        <Select.Option value='3'>Brasil</Select.Option>
+        <Select.Option value='4'>Uruguay</Select.Option>
+    </Select>
     </>
   )
 }

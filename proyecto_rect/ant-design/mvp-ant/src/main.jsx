@@ -12,6 +12,7 @@ import CarouselPagina from './pages/CarouselPagina';
 import ModalPagina from './pages/ModalPagina';
 import GridPagina from './pages/GridPagina';
 import InputPagina from './pages/InputPagina';
+import FormPagina from './pages/FormPagina';
 const router = createBrowserRouter(
   [
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter(
         {
           path:"/input",
           element:<InputPagina/>
+        },
+        {
+          path:"/form",
+          element:<FormPagina/>
         }
       ]
     }
