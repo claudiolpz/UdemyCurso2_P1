@@ -6,6 +6,7 @@ const FormPagina = () => {
     let handleSubmit = (datos) =>{
         console.log(`Email : ${datos.correo}`)
         console.log(`Contrasena : ${datos.password}`)
+        console.log(`Recordar : ${datos.recordar}`)
     }
     const formRef = createRef()
     const limpiar = ()=>{
@@ -27,6 +28,10 @@ const FormPagina = () => {
     name="formulario"
     onFinish={handleSubmit}
     ref={formRef}
+    initialValues={
+        {
+            recordar:true
+        }}
     >
         <Form.Item 
         label="Email"
@@ -55,7 +60,7 @@ const FormPagina = () => {
         >
             <Input.Password placeholder="Contraseña"/>
         </Form.Item>
-        <Form.Item label="Recordar" name="recordad" valuePropName='checked'>
+        <Form.Item label="Recordar" name="recordar" valuePropName='checked'>
             <Checkbox>Recordar Usuario</Checkbox>
         </Form.Item>
         <Form.Item >
