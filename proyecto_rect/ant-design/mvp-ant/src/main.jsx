@@ -13,6 +13,7 @@ import ModalPagina from './pages/ModalPagina';
 import GridPagina from './pages/GridPagina';
 import InputPagina from './pages/InputPagina';
 import FormPagina from './pages/FormPagina';
+import TablesPaginas from './pages/TablesPaginas';
 const router = createBrowserRouter(
   [
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter(
         {
           path:"/form",
           element:<FormPagina/>
+        },
+        {
+          path:"/tables",
+          element:<TablesPaginas/>
         }
       ]
     }

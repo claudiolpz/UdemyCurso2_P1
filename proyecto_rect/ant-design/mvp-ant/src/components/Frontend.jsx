@@ -14,7 +14,8 @@ const Frontend = () => {
     { key: 7, label: <Link to="/modal">Modal</Link> },
     { key: 8, label: <Link to="/grid">Grid</Link> },
     { key: 9, label: <Link to="/input">input</Link> },
-    { key: 10, label: <Link to="/form">Form</Link> }
+    { key: 10, label: <Link to="/form">Form</Link> },
+    { key: 11, label: <Link to="/tables">Tables</Link> }
 
 ];
   return (
