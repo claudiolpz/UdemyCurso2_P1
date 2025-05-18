@@ -14,6 +14,7 @@ import GridPagina from './pages/GridPagina';
 import InputPagina from './pages/InputPagina';
 import FormPagina from './pages/FormPagina';
 import TablesPaginas from './pages/TablesPaginas';
+import TablePaginaAxios from './pages/TablePaginaAxios';
 const router = createBrowserRouter(
   [
     {
@@ -63,7 +64,11 @@ const router = createBrowserRouter(
         {
           path:"/tables",
           element:<TablesPaginas/>
-        }
+        },
+        {
+          path:"/tables-axios",
+          element:<TablePaginaAxios/>
+        },
       ]
     }
   ]
