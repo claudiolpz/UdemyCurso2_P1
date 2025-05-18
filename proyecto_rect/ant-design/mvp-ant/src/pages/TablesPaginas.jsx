@@ -6,12 +6,17 @@ const TablesPaginas = () => {
         {
             title:'Nombre',
             dataIndex:'nombre',
-            key:'nombre'
+            key:'nombre',
+            render:(fila)=>
+            <>
+            <u><strong>{fila}</strong></u>
+            </>
         },
         {
             title:'Edad',
             dataIndex:'edad',
-            key:'edad'
+            key:'edad',
+            render:((fila)=> (fila>24) ? <s>{fila}</s>:<i>{fila}</i>)
         },
         {
             title:'Genero',
