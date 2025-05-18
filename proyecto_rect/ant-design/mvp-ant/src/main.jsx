@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client' 
 import {createBrowserRouter, RouterProvider} from 'react-router'
+import '/public/css/estilos.css'
 import Frontend from './components/Frontend';
 import Home from './pages/Home';
 import IconPagina from './pages/IconPagina';
@@ -10,6 +11,7 @@ import MessagePagina from './pages/MessagePagina';
 import CarouselPagina from './pages/CarouselPagina';
 import ModalPagina from './pages/ModalPagina';
 import GridPagina from './pages/GridPagina';
+import InputPagina from './pages/InputPagina';
 const router = createBrowserRouter(
   [
     {
@@ -47,6 +49,10 @@ const router = createBrowserRouter(
         {
           path:"/grid",
           element:<GridPagina/>
+        },
+        {
+          path:"/input",
+          element:<InputPagina/>
         }
       ]
     }

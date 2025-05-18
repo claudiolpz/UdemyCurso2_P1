@@ -15,16 +15,16 @@ const CarouselPagina = () => {
     <h1>Carousel</h1>
      <Carousel infinite={true} arrows={true}>
         <div>
-            <img src="/public/civiv.jpg" alt="" />
+            <img src="/images/civiv.jpg" alt="" />
         </div>
         <div>
-            <img src="/public/fc.jpg" alt="" />
+            <img src="/images/fc.jpg" alt="" />
         </div>
         <div>
-            <img src="/public/ae86vsfd.jpg" alt="" />
+            <img src="/images/ae86vsfd.jpg" alt="" />
         </div>
         <div>
-            <img src="/public/aa.jpg" alt="" />
+            <img src="/images/aa.jpg" alt="" />
         </div>
      </Carousel>
     </>
