@@ -28,10 +28,31 @@ const FormPagina = () => {
     onFinish={handleSubmit}
     ref={formRef}
     >
-        <Form.Item label="Email" name="correo" >
+        <Form.Item 
+        label="Email"
+        name="correo" 
+        rules={[
+            {
+                required:true,
+                message:"el campo Email es Obligatorio"
+            },{
+                type:'email',
+                message:'Debe ingresar un correo valido'
+            }
+        ]}
+        >
             <Input placeholder="E-Mail"/>
         </Form.Item>
-        <Form.Item label="Contraseña" name="password" >
+        <Form.Item 
+        label="Contraseña" 
+        name="password" 
+        rules={[
+            {
+                required:true,
+                message:"el campo contrasena es Obligatorio"
+            }
+        ]}
+        >
             <Input.Password placeholder="Contraseña"/>
         </Form.Item>
         <Form.Item label="Recordar" name="recordad" valuePropName='checked'>
