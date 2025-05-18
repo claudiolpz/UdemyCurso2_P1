@@ -1,7 +1,16 @@
 import { Breadcrumb, Form, Button, Input, Checkbox } from 'antd'
+import { createRef } from 'react'
 import { Link } from 'react-router'
 
 const FormPagina = () => {
+    let handleSubmit = (datos) =>{
+        console.log(`Email : ${datos.correo}`)
+        console.log(`Contrasena : ${datos.password}`)
+    }
+    const formRef = createRef()
+    const limpiar = ()=>{
+        formRef.current.resetFields();
+    }
   return (
     <>
     <Breadcrumb
@@ -14,12 +23,16 @@ const FormPagina = () => {
           },
         ]}
     />
-    <Form>
+    <Form 
+    name="formulario"
+    onFinish={handleSubmit}
+    ref={formRef}
+    >
         <Form.Item label="Email" name="correo" >
             <Input placeholder="E-Mail"/>
         </Form.Item>
         <Form.Item label="Contraseña" name="password" >
-            <Input placeholder="Contraseña"/>
+            <Input.Password placeholder="Contraseña"/>
         </Form.Item>
         <Form.Item label="Recordar" name="recordad" valuePropName='checked'>
             <Checkbox>Recordar Usuario</Checkbox>
@@ -27,7 +40,7 @@ const FormPagina = () => {
         <Form.Item >
             <Button htmlType='submit' type='primary' title="Iniciar Sesion">Iniciar Sesion</Button>
             &nbsp;&nbsp;&nbsp;
-            <Button title="Limpiar">Limpiar</Button>
+            <Button title="Limpiar" danger onClick={limpiar}>Limpiar</Button>
         </Form.Item>
     </Form>
     </>
